@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============= Fonts ============= */
+@font-face {
+    font-family: Cyber;
+    src: url("/fonts/cyber.ttf");
+    font-display: swap;
+}  
+
+body {
+    @apply bg-darker text-white
+}
