@@ -19,7 +19,7 @@
 
         <!-- This link will only appear if a link is passed to the component -->
         {#if link}
-            <a href="https://lynix.ca/" class="hover:text-black hover:underline transition-colors font-bold"> {linkName}</a>
+            <a href={link} class="hover:text-black hover:underline transition-colors font-bold"> {linkName}</a>
         {/if}
     </span>
 </div>
