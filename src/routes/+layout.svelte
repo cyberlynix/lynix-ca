@@ -27,7 +27,7 @@
 </div>
 {:else}
 <Navbar/>
-<Alert link="https://lynix.ca/blog/why-i-switched-to-svelte" linkName="Learn More" message="Welcome to the new Lynix.ca, built in SvelteKit!"/>
+<Alert link="https://lynix.ca/blog/why-we-switched-to-svelte" linkName="Learn More" message="Welcome to the new Lynix.ca, built in SvelteKit!"/>
 
 <slot></slot>
 
