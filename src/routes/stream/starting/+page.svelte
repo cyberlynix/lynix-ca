@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Test from '$lib/Test.svelte';
 	import { onMount, onDestroy } from 'svelte';
 
 	let timeLeft = 15 * 60; // 15 minutes in seconds
@@ -141,7 +140,6 @@
 	}
 </script>
 
-<Test />
 <div class="flex items-center justify-center w-full h-screen">
 	<div class="w-full">
 		<div>

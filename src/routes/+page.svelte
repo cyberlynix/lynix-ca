@@ -1,25 +1,25 @@
 <script>
-    
+	import FurImage from "$lib/components/FurImage.svelte";
 </script>
 
 <svelte:head>
 	<title>Lynix</title>
 </svelte:head>
 
-<div class="px-4 py-1 inline-flex items-center w-full bg-gradient-to-r from-cyan-700 to-green-700 py-5 w-full animated-gradient">
-    <span class="text-white text-xl">Lynix is currently looking for work & interships in IT! <a href="https://lynix.ca/resume" class="hover:text-black hover:underline transition-colors"> Learn More</a></span>
-</div>
 <div
     class="bg-emerald-600 font-cyber text-2xl text-black py-1 px-3 hidden"
 >
     Welcome to lynix.ca my personal website! Thanks for scanning my badge!
 </div>
 <div class="relative h-[700px]">
-    <div class="flex items-center h-full justify-center bg-black bg-opacity-60 absolute z-20 w-full">
+    <div class="flex items-center h-full justify-center bg-black bg-opacity-70 absolute z-20 w-full">
         <div class="max-w-3xl mx-auto text-center">
+            <div class="flex justify-center">
+                <FurImage src="/images/Lynix_Mulli.png" alt="Lynix" class="h-32 w-32 mr-5 ml-5 mb-5 rounded-full" loading="lazy"/>
+            </div>
             <h1 class="mb-4 text-3xl text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-                WELCOME TO{" "}
-                <span class="text-cyan-700 px-3">LYNIX<span class="text-green-600">.CA</span></span>
+                Hello, {" "}
+                <span class="text-cyan-600 px-3">I'm <span class="text-green-600">Lynix</span>!</span>
             </h1>
             <p class="text-2xl text-gray-500 dark:text-white">
                 Nice to meet you! Take a look at my pages to learn more about my
@@ -28,17 +28,13 @@
             </p>
         </div>
     </div>
-    <!-- <CyberImage src="/bg.png" alt="Background Image" containerclass="bg-blue-900 font-cyber h-[600px]" priority={true} /> -->
+    <FurImage src="/images/bg.png" alt="Background image" class="h-[700px] w-full object-cover" loading="lazy"/>
 </div>
 <!-- Container -->
 <div class="flex flex-col items-center py-20">
     <!-- Content-->
     <section class="p-6 md:w-1/2 w-full">
-        <!-- <CyberImage
-            alt="Lynix"
-            src="/imgs/Lynix_Mulli.png"
-            containerclass="h-32 w-32 float-right rotate-6 mr-5 ml-5 mb-5 border-2 border-gray-700 rounded-2xl float-animation" imageclass="rounded-2xl"
-        /> -->
+        <FurImage src="/images/Lynix_Mulli.png" alt="Lynix" class="float-right h-32 w-32 rotate-6 mr-5 ml-5 mb-5 rounded-2xl float-animation" loading="lazy"/>
         <h1 class="text-6xl font-cyber">
             👋 Hello <span class="text-green-700">There</span>!
         </h1>

@@ -2,8 +2,8 @@
     import { onMount } from 'svelte';
 
     import '../app.css';
-    import Navbar from "$lib/Navbar.svelte";
-    import Alert from "$lib/Alert.svelte";
+    import Navbar from "$lib/components/Navbar.svelte";
+    import Alert from "$lib/components/Alert.svelte";
 
     let currentPath = "";
 

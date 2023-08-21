@@ -2,6 +2,10 @@
 
 </script>
 
+<svelte:head>
+	<title>Lynix - Fursona</title>
+</svelte:head>
+
 <div class="min-h-screen px-10 py-10 font-cyber">
     <div class="mt-3 px-4 py-1 rounded-full bg-dark inline-flex items-center mx-2 sm:mx-5">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width={1.5} stroke="currentColor" class="w-6 h-6 text-red-500 mr-2">
