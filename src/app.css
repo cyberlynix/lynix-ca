@@ -136,3 +136,35 @@ a {
   padding: 0px var(--padsize) var(--padsize) 1.5rem;
   font-size: 1.5em;
 }
+
+/* Floof Alert */
+.floof-alert {
+  margin-top: 0.5em;
+  padding: 0.7em 5.5em 0.7em 5.5em;
+}
+
+.floof-alert p {
+  padding: 0em;
+  margin: 0em;
+}
+
+/* Gradient Animations */
+/* Animate Gradient */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradientAnimation 15s infinite;
+  background-image: linear-gradient(to right, var(--primary-cyan), var(--primary-green));
+  color: #121212;
+}
