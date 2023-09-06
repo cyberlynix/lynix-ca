@@ -2,7 +2,7 @@
     
 @font-face {
   font-family: 'pixel';
-  src: url('fonts/vt323-regular-webfont.woff2');
+  src: url('/fonts/pixel.woff2');
 }
 
 :root {
