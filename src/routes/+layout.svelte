@@ -18,6 +18,8 @@
     onMount(() => {
         updateCurrentPath(); // Initialize currentPath on component mount
         window.addEventListener('popstate', updateCurrentPath);
+
+        document.documentElement.setAttribute('data-theme', 'dark');
     });
 </script>
 
