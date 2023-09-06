@@ -12,6 +12,12 @@
 
   --background-color: #d1d5db;
   --text-color: #121212;
+  
+
+  /* Paddings */
+  --padsize: 0.625rem;
+
+  /* Margins */
 }
 
 /* Dark Mode */
@@ -27,9 +33,19 @@
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  padding: 2rem;
-  font-size: 2em;
+  padding: 3rem;
   font-family: pixel;
+}
+
+p {
+  word-wrap: anywhere;
+  font-size: 1.4em;
+}
+
+a {
+  color: unset;
+  text-decoration-style: dotted;
+  color: var(--primary-green);
 }
 
 .text-green {
@@ -40,21 +56,83 @@ body {
   color: var(--primary-cyan);
 }
 
-.floof-container {
+
+/* Page */
+.floof-page {
   margin: auto;
   width: 100%;
   max-width: 1500px;
   border: 3px solid var(--primary-cyan);
   box-sizing: border-box;
-  padding-left: 3rem;
+  min-height: 100vh;
 }
 
 @media (max-width: 991px) {
-  .floof-container {
+  .floof-page {
     margin: auto;
     width: 100%;
     /* max-width: 95vw; */
     border: 3px solid var(--primary-cyan);
     box-sizing: border-box;
   }
+}
+
+/* Header */
+.floof-header {
+  border-bottom: 3px solid var(--blue);
+  padding-left: 5px;
+  max-width: 100%;
+  max-height: 150vh;
+  padding-bottom: 0;
+  margin: 0;
+  display: flex;
+  align-items: flex-end;
+
+  color: white;
+  border-bottom: 3px solid var(--primary-cyan);
+  background: linear-gradient(90deg, var(--background-color) 0%, var(--primary-cyan) 33%, var(--primary-cyan) 66%, var(--background-color));
+}
+
+.floof-header a {
+  color: white;
+  text-shadow: 5px 5px #065164;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+}
+
+.floof-header .title {
+  font-size: 2.5em;
+}
+
+.floof-header .subtitle {
+  font-size: 1.5em;
+}
+
+/* Page Container */
+.floof-container {
+  display: flex;
+}
+
+/* Page Navigation */
+.floof-navigation {
+    width: 22%;
+    padding: 0px var(--padsize) var(--padsize) var(--padsize);
+    word-wrap: break-word;
+    border-right: 3px solid var(--primary-cyan);
+    min-height: 100vh;
+}
+
+.floof-navigation h1 {
+  text-align: center;
+}
+
+.floof-navigation hr {
+  border-color: var(--primary-cyan);
+}
+
+/* Page Content */
+.floof-content {
+  padding: 0px var(--padsize) var(--padsize) 1.5rem;
+  font-size: 1.5em;
 }
