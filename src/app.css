@@ -1,141 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ============= Fonts ============= */
+/* GNU AGPLv3 Licence - Inspired by https://jae.fi/ (Jae Lo Presti) */
+    
 @font-face {
-    font-family: Cyber;
-    src: url("/fonts/cyber.ttf");
-}  
+  font-family: 'pixel';
+  src: url('fonts/vt323-regular-webfont.woff2');
+}
 
-/* ============= Styling ============= */
+:root {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --primary-cyan: #0891b2;
+  --primary-green: #16a34a;
+}
+
 body {
-  @apply bg-darker text-white font-cyber
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 2rem;
+  font-size: 2em;
+  font-family: pixel;
 }
 
-p, h1 {
-  @apply break-words;
+.text-green {
+  color: var(--primary-green);
 }
 
-::-moz-selection { /* Code for Firefox */
-  @apply bg-green-600 text-white
-}
-
-::selection {
-  @apply bg-green-600 text-white
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(-5px) rotate(6deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(6deg);
-  }
-}
-
-.float-animation {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float-rev {
-  0%, 100% {
-    transform: translateY(0px) rotate(-6deg);
-  }
-  50% {
-    transform: translateY(-7px) rotate(-6deg);
-  }
-}
-
-.float-animation-rev {
-  animation: float-rev 4.5s ease-in-out infinite;
-}
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  @apply bg-darker;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  @apply bg-green-600;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-green-700;
-}
-
-
-
-.nav-link {
-  @apply flex items-center md:justify-center font-cyber text-xl px-4 py-2 mt-2 text-gray-900 dark:hover:bg-green-700 dark:focus:bg-green-700 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
-}
-
-.auth-btn {
-  @apply flex items-center justify-center font-cyber text-xl px-4 py-2 mt-2 text-gray-900 dark:hover:bg-dark dark:focus:bg-dark dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
-}
-
-.auth-btn-2 {
-  @apply flex items-center justify-center font-cyber text-xl px-4 py-2 mt-2 text-dark dark:hover:bg-green-700 transition-colors dark:focus:bg-green-700 dark:focus:text-dark dark:hover:text-gray-900 dark:text-gray-900 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
-}
-.dropdown-link {
-  @apply block px-4 py-2 mt-2 font-cyber bg-transparent  dark:bg-transparent dark:hover:bg-green-700 dark:focus:bg-green-700 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
-}
-
-/* Animate Gradiant */
-@keyframes gradientAnimation {
-  0% {
-      background-position: 100% 50%;
-  }
-  50% {
-      background-position: 0% 50%;
-  }
-  100% {
-      background-position: 100% 50%;
-  }
-}
-
-.animated-gradient {
-  background-size: 200% 200%;
-  animation: gradientAnimation 15s infinite;
-}
-
-/* Typing */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-}
-
-@keyframes blink-caret {
-  50% {
-    border-color: transparent;
-  }
-}
-
-.animate-typing-container {
-  display: inline-block;
-  position: relative;
-}
-
-.animate-typing-text {
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
-  animation: typing 3s steps(40, end);
-}
-
-.animate-typing-caret {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 3px;
-  height: 100%;
-  background-color: #000; /* Adjust the caret color as needed */
-  animation: blink-caret 0.75s step-end infinite;
+.text-cyan {
+  color: var(--primary-cyan);
 }
