@@ -27,6 +27,7 @@
   --primary-green: #16a34a;
 
   --background-color: #121212;
+  --secondry-background-color: #18181b;
   --text-color: #d1d5db;
 }
 
@@ -67,16 +68,6 @@ a {
   min-height: 100vh;
 }
 
-@media (max-width: 991px) {
-  .floof-page {
-    margin: auto;
-    width: 100%;
-    /* max-width: 95vw; */
-    border: 3px solid var(--primary-cyan);
-    box-sizing: border-box;
-  }
-}
-
 /* Header */
 .floof-header {
   border-bottom: 3px solid var(--blue);
@@ -112,11 +103,13 @@ a {
 /* Page Container */
 .floof-container {
   display: flex;
+  background-color: var(--secondry-background-color);
 }
 
 /* Page Navigation */
 .floof-navigation {
-    width: 22%;
+    min-width: 22%;
+    max-width: 100%;
     padding: 0px var(--padsize) var(--padsize) var(--padsize);
     word-wrap: break-word;
     border-right: 3px solid var(--primary-cyan);
@@ -127,13 +120,18 @@ a {
   text-align: center;
 }
 
+.floof-navigation p {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
 .floof-navigation hr {
   border-color: var(--primary-cyan);
 }
 
 /* Page Content */
 .floof-content {
-  padding: 0px var(--padsize) var(--padsize) 1.5rem;
+  padding: 1.5rem;
   font-size: 1.5em;
 }
 
@@ -141,6 +139,7 @@ a {
 .floof-alert {
   margin-top: 0.5em;
   padding: 0.7em 5.5em 0.7em 5.5em;
+  text-align: center;
 }
 
 .floof-alert p {
@@ -167,4 +166,60 @@ a {
   animation: gradientAnimation 15s infinite;
   background-image: linear-gradient(to right, var(--primary-cyan), var(--primary-green));
   color: #121212;
+}
+
+.sidepfp {
+  float: right;
+  max-width: 10em;
+  border: 3px solid var(--primary-cyan);
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.floof-content p {
+  font-size: 1.1em;
+}
+
+.floof-content hr {
+  border-color: var(--primary-cyan);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
+  body {
+    padding: 0px;
+  }
+
+  .floof-container {
+    flex-wrap: wrap;
+  }
+}
+
+.floof-navigation .floof-card {
+  border: 3px solid var(--primary-green);
+  font-size: 1.5rem;
+  padding: 0px;
+}
+
+.floof-navigation .floof-card .floof-header {
+  border-bottom: 3px solid var(--primary-green);
+  background: linear-gradient(90deg, var(--background-color) 0%, var(--primary-green) 33%, var(--primary-green) 66%, var(--background-color));
+}
+
+.floof-navigation .floof-card .floof-header h3 {
+  font-size: 4rem;
+}
+
+.floof-navigation .floof-card p {
+  margin: 1rem;
+  padding-left: 0px;
+}
+
+.floof-navigation .floof-card ul {
+  margin: 1rem;
+  padding-left: 2.3rem;
+}
+
+.floof-navigation .floof-card a {
+  color: var(--primary-cyan)
 }
