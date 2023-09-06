@@ -23,8 +23,8 @@
             <hr/>
             <p>Copyright 2022-2023 <a href="https://lynix.ca/" class="h-card" rel="me">cyberlynix</a>, this page style is inspired by <a href="https://777.tf/" class="h-card" rel="me">Jae Lo Presti</a>; Powered by <a href="">FloofRender</a> & <a href="">Svelte</a>, under the GNU AGPLv3;</p>
             <br/>
-            <p>LynixCA Version: <a href="https://777.tf/" class="h-card" rel="me">v1.2.70</a><br/>
-               FloofRender Version: <a href="https://777.tf/" class="h-card" rel="me">v0.0.3</a></p>
+            <p>LynixCA Version: <a href="https://github.com/cyberlynix/lynix-ca/" class="h-card" rel="me">v1.2.70</a><br/>
+               FloofRender Version: <a href="https://github.com/cyberlynix/floof-render/" class="h-card" rel="me">v0.0.3</a></p>
             <hr>
 
 		</div>
