@@ -1,3 +1,5 @@
+mod router;
+
 use axum::{response::Html, routing::get, Router, extract::State, Server, Json, http};
 use tower_http::services::{ServeDir, ServeFile};
 use serde_json::json;
@@ -7,9 +9,11 @@ use axum::http::{header, Response, StatusCode};
 use axum::response::IntoResponse;
 use handlebars::Handlebars;
 use serde::Serialize;
+use crate::router::root::root_router;
+
 #[derive(Clone)]
-struct AppState<'a> {
-    handlebars: Handlebars<'a>,
+pub struct AppState {
+    handlebars: Handlebars<'static>,
 }
 
 
@@ -19,18 +23,11 @@ async fn main() {
         handlebars: Handlebars::new(),
     };
 
-    let api_router = Router::new()
-        .route("/", get(api_home))
-        .fallback(api_error);
-
-    let app = Router::new()
-        .route("/", get(home))
-        .nest("/api/", api_router)
-        .nest_service("/assets", ServeDir::new("assets"))
-        .fallback(error)
-        .with_state(state);
+    let app = Router::new().nest("/", root_router())
+        .fallback(error).with_state(state);
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3001));
+    println!("⚡️ LynixCA (FloofRender) is now running on http://{}", addr);
 
     Server::bind(&addr)
         .serve(app.into_make_service())
@@ -50,13 +47,25 @@ struct ErrorData<'a> {
     status: i32
 }
 
-async fn home(State(state): State<AppState<'_>>) -> Html<String> {
+async fn home(State(state): State<AppState>) -> Html<String> {
     let template = include_str!("../pages/index.hbs");
     let data = TemplateData { name: "Lynix" };
     Html(state.handlebars.render_template(template, &data).unwrap())
 }
 
-async fn error(State(state): State<AppState<'_>>) -> Html<String> {
+async fn blog(State(state): State<AppState>) -> Html<String> {
+    let template = include_str!("../pages/blog/index.hbs");
+    let data = TemplateData { name: "Lynix" };
+    Html(state.handlebars.render_template(template, &data).unwrap())
+}
+
+async fn article(State(state): State<AppState>) -> Html<String> {
+    let template = include_str!("../pages/blog/article.hbs");
+    let data = TemplateData { name: "Lynix" };
+    Html(state.handlebars.render_template(template, &data).unwrap())
+}
+
+async fn error(State(state): State<AppState>) -> Html<String> {
     let template = include_str!("../pages/error.hbs");
     let data = ErrorData{ message: "Page unavailable, try again later.", status: 404 };
     Html(state.handlebars.render_template(template, &data).unwrap())

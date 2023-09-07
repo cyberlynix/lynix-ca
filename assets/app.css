@@ -109,8 +109,8 @@ a {
 /* Page Navigation */
 .floof-navigation {
     min-width: 22%;
-    max-width: 100%;
-    padding: 0px var(--padsize) var(--padsize) var(--padsize);
+    max-width: 22%;
+    padding: 0 var(--padsize) var(--padsize) var(--padsize);
     word-wrap: break-word;
     border-right: 3px solid var(--primary-cyan);
     min-height: 100vh;
@@ -192,6 +192,12 @@ a {
 
     .floof-container {
         flex-wrap: wrap;
+    }
+
+    .floof-navigation {
+        min-width: 100%;
+        max-width: 100%;
+        width: 100%;
     }
 }
 
