@@ -51,8 +51,8 @@
             <hr/>
             <p>Copyright 2022-2023 <a href="https://lynix.ca/" class="h-card" rel="me">cyberlynix</a>, this page style is inspired by <a href="https://777.tf/" rel="jae">Jae Lo Presti</a>; Powered by <a href="https://github.com/cyberlynix/floof-render" rel="Floof Render Coming Soon! Built in Rust">FloofRender</a> & <a href="https://svelte.dev/" rel="Svelte Framework: cybernetically enhanced web apps">Svelte</a>, under the GNU AGPLv3;</p>
             <br/>
-            <p>LynixCA Version: <a href="https://github.com/cyberlynix/lynix-ca/" rel="LynixCA Version v1.2.70">v1.2.70</a><br/>
-               FloofRender Version: <a href="https://github.com/cyberlynix/floof-render/" rel="Floof Render Version v0.0.3">v0.0.3</a></p>
+            <p>Version: <a href="https://github.com/cyberlynix/lynix-ca/" rel="LynixCA Version v1.2.73">v1.2.73-pre-beta_c</a><br/>
+               FloofRender Version: <a href="https://github.com/cyberlynix/floof-render/" rel="Floof Render Version v1.0.0">v1.0.0</a></p>
             <hr>
 
 		</div>
@@ -60,7 +60,7 @@
 
 
             <div class="floof-alert animated-gradient">
-                <p>Welcome to the new Lynix.ca, built in SvelteKit! <span style="font-weight: 600;">Learn More</span></p>
+                <p>Welcome to the new Lynix.ca, built with Rust & FloofRender! <span style="font-weight: 600;">Learn More</span></p>
             </div>
 
 

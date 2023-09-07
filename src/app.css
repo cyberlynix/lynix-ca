@@ -164,8 +164,8 @@ a {
 .animated-gradient {
   background-size: 200% 200%;
   animation: gradientAnimation 15s infinite;
-  background-image: linear-gradient(to right, var(--primary-cyan), var(--primary-green));
-  color: #121212;
+  background-image: linear-gradient(to right, #c2410c, #b91c1c);
+  color: white;
 }
 
 .sidepfp {
