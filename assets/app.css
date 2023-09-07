@@ -184,8 +184,8 @@ a {
     border-color: var(--primary-cyan);
 }
 
-/* Mobile Responsiveness for Samsung Galaxy Z Fold 3 Unfolded */
-/*@media screen and (min-width: 768px) {
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
     body {
         padding: 0;
     }
@@ -199,7 +199,7 @@ a {
         max-width: 100%;
         width: 100%;
     }
-}*/
+}
 
 .floof-navigation .floof-card {
     border: 3px solid var(--primary-green);
