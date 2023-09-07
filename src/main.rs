@@ -25,7 +25,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(home))
-        .nest("/api", api_router)
+        .nest("/api/", api_router)
         .nest_service("/assets", ServeDir::new("assets"))
         .fallback(error)
         .with_state(state);
