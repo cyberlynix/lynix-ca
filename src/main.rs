@@ -7,20 +7,23 @@ use std::net::SocketAddr;
 use std::sync::Arc;
 use axum::http::{header, Response, StatusCode};
 use axum::response::IntoResponse;
-use handlebars::Handlebars;
 use serde::Serialize;
 use crate::router::root::root_router;
+use tera::Tera;
+extern crate chrono;
+
+use chrono::{Datelike, Local};
 
 #[derive(Clone)]
 pub struct AppState {
-    handlebars: Handlebars<'static>,
+
 }
 
 
 #[tokio::main]
 async fn main() {
     let state = AppState {
-        handlebars: Handlebars::new(),
+
     };
 
     let app = Router::new().nest("/", root_router())
@@ -33,6 +36,17 @@ async fn main() {
         .serve(app.into_make_service())
         .await
         .unwrap()
+}
+
+fn tera_include() -> Tera {
+    let tera = Tera::new("pages/**/*").unwrap();
+    tera
+}
+
+fn common_context() -> tera::Context {
+    let mut context = tera::Context::new();
+    context.insert("title", "axum-tera");
+    context
 }
 
 
@@ -48,27 +62,72 @@ struct ErrorData<'a> {
 }
 
 async fn home(State(state): State<AppState>) -> Html<String> {
-    let template = include_str!("../pages/index.hbs");
-    let data = TemplateData { name: "Lynix" };
-    Html(state.handlebars.render_template(template, &data).unwrap())
+    let tera = tera_include();
+    let mut context = common_context();
+
+    let output = tera.render("index.html", &context);
+    Html(output.unwrap())
 }
 
 async fn blog(State(state): State<AppState>) -> Html<String> {
-    let template = include_str!("../pages/blog/index.hbs");
-    let data = TemplateData { name: "Lynix" };
-    Html(state.handlebars.render_template(template, &data).unwrap())
+    let tera = tera_include();
+    let mut context = common_context();
+
+    let output = tera.render("blog/index.html", &context);
+    Html(output.unwrap())
 }
 
 async fn article(State(state): State<AppState>) -> Html<String> {
-    let template = include_str!("../pages/blog/article.hbs");
-    let data = TemplateData { name: "Lynix" };
-    Html(state.handlebars.render_template(template, &data).unwrap())
+    let tera = tera_include();
+    let mut context = common_context();
+
+    let current_date = Local::now().date();
+
+    let formatted_date = format!(
+        "{:02}{} {}, {}",
+        current_date.day(),
+        match current_date.day() {
+            1 | 21 | 31 => "st",
+            2 | 22 => "nd",
+            3 | 23 => "rd",
+            _ => "th",
+        },
+        match current_date.month() {
+            1 => "January",
+            2 => "February",
+            3 => "March",
+            4 => "April",
+            5 => "May",
+            6 => "June",
+            7 => "July",
+            8 => "August",
+            9 => "September",
+            10 => "October",
+            11 => "November",
+            12 => "December",
+            _ => "",
+        },
+        current_date.year(),
+    );
+
+    context.insert("title", "Test");
+    context.insert("date", &formatted_date);
+    context.insert("author", "Lynix");
+    context.insert("content", "Test Content doing cyber beeps'n boops.");
+
+    let output = tera.render("blog/article.html", &context);
+    Html(output.unwrap())
 }
 
 async fn error(State(state): State<AppState>) -> Html<String> {
-    let template = include_str!("../pages/error.hbs");
-    let data = ErrorData{ message: "Page unavailable, try again later.", status: 404 };
-    Html(state.handlebars.render_template(template, &data).unwrap())
+    let tera = tera_include();
+    let mut context = common_context();
+
+    context.insert("status", &404);
+    context.insert("message", "Page unavailable, try again later.");
+
+    let output = tera.render("error.html", &context);
+    Html(output.unwrap())
 }
 
 /* Lynix API */

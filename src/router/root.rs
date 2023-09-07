@@ -1,6 +1,5 @@
 use axum::Router;
 use axum::routing::get;
-use handlebars::Handlebars;
 use tower_http::services::ServeDir;
 
 use crate::{AppState, error, home};
