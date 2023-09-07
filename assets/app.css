@@ -185,7 +185,7 @@ a {
 }
 
 /* Mobile Responsiveness for Samsung Galaxy Z Fold 3 Unfolded */
-@media screen and (min-width: 768px) {
+/*@media screen and (min-width: 768px) {
     body {
         padding: 0;
     }
@@ -199,7 +199,7 @@ a {
         max-width: 100%;
         width: 100%;
     }
-}
+}*/
 
 .floof-navigation .floof-card {
     border: 3px solid var(--primary-green);
