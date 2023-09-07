@@ -223,3 +223,23 @@ a {
 .floof-navigation .floof-card a {
     color: var(--primary-cyan)
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.floof-error h1 {
+    margin: 1.3rem 0 0 0;
+}
+
+.floof-error p {
+    margin: 1.2rem 0 0 0;
+}
+
+.floof-error img {
+    width: 250px;
+    height: 250px;
+}
