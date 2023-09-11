@@ -83,7 +83,22 @@
         socket = new WebSocket('wss://shock.lynix.ca');
 
         socket.addEventListener('open', (event) => {
-            updateStatus('Connected');
+            updateStatus('Exchanging Authentification...');
+
+            // Send an initial message with a random auth key
+            const randomAuthKey = Array.from({ length: 32 }, () =>
+                Math.random().toString(36)[2]
+            ).join('');
+
+            const initialMessage = {
+                auth_key: randomAuthKey,
+            };
+            socket.send(JSON.stringify(initialMessage));
+
+            // Introduce a 0.5-second delay before updating the status to 'Connected'
+            setTimeout(() => {
+                updateStatus('Connected');
+            }, 500); // 500 milliseconds (0.5 seconds)
         });
 
         socket.addEventListener('message', handleMessage);
