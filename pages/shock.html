@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="floof-content">
+
+
+    <div class="floof-alert animated-gradient">
+        <p>This page is protected with authentication code. <span style="font-weight: 600;">Learn More</span></p>
+    </div>
+
+    <br/>
+    <div class="status" style="margin-bottom: 10px;">
+        Connection Status: <span id="connectionStatus" style="color: red;">Disconnected</span>
+    </div>
+    <br/>
+    <div id="authorization" style="margin-bottom: 10px;">
+        Authorization Code: <input id="auth" type="password" placeholder="Authorization Code">
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        Action: <select id="actionSelect">
+            <option>Shock</option>
+            <option>Vibrate</option>
+            <option>Beep</option>
+        </select>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        Intensity (1-99): <input type="number" id="intensity" max="99" min="1" placeholder="Intensity" value="1">
+    </div>
+
+    <div id="ping-delay" style="margin-bottom: 10px;">
+        Ping Delay (ms): <input type="number" id="pingDelay" placeholder="Delay in ms" value="0">
+    </div>
+
+    <button id="reconnectButton">Reconnect</button>
+    <button id="sendButton">Send Command</button>
+</div>
+
+<script>
+    const connectionStatusElement = document.getElementById('connectionStatus');
+    const actionSelect = document.getElementById('actionSelect');
+    const authInput = document.getElementById('auth');
+    const intensityInput = document.getElementById('intensity');
+    const pingDelayInput = document.getElementById('pingDelay');
+    const sendButton = document.getElementById('sendButton');
+    const reconnectButton = document.getElementById('reconnectButton');
+
+    let socket;
+
+    // Function to update the connection status
+    function updateStatus(status) {
+        connectionStatusElement.textContent = status;
+        // Set different colors based on status
+        if (status === 'Connected') {
+            connectionStatusElement.style.color = 'green';
+        } else if (status === 'Error' || status === 'Connection lost') {
+            connectionStatusElement.style.color = 'red';
+        } else {
+            // Default color for other statuses
+            connectionStatusElement.style.color = 'gray';
+        }
+    }
+
+    // Function to handle WebSocket message reception
+    function handleMessage(event) {
+        console.log('Received message:', event.data);
+        // You can handle the received message here
+    }
+
+    // Function to handle WebSocket errors
+    function handleError(error) {
+        console.error('WebSocket error:', error);
+        updateStatus('Error');
+    }
+
+    // Function to connect to the WebSocket server
+    function connectWebSocket() {
+        socket = new WebSocket('wss://shock.lynix.ca');
+
+        socket.addEventListener('open', (event) => {
+            updateStatus('Connected');
+        });
+
+        socket.addEventListener('message', handleMessage);
+
+        socket.addEventListener('error', (event) => {
+            handleError(event.error);
+        });
+
+        socket.addEventListener('close', (event) => {
+            if (event.wasClean) {
+                updateStatus('Disconnected');
+            } else {
+                updateStatus('Connection lost');
+            }
+        });
+    }
+
+    // Function to send data to the WebSocket server
+    function sendWebSocketData() {
+        const action = actionSelect.value;
+        const auth = authInput.value;
+        const intensity = intensityInput.value;
+        const pingDelay = pingDelayInput.value;
+
+        const data = {
+            auth,
+            action,
+            intensity,
+            pingDelay
+        };
+
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify(data));
+        }
+    }
+
+    // Function to reconnect the WebSocket
+    function reconnectWebSocket() {
+        if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
+            socket.close();
+        }
+
+        connectWebSocket();
+    }
+
+    sendButton.addEventListener('click', sendWebSocketData);
+    reconnectButton.addEventListener('click', reconnectWebSocket);
+
+    // Initial WebSocket connection
+    connectWebSocket();
+</script>
+
+<style>
+    input, select {
+        font-family: pixel;
+        font-size: 20px;
+        background: #121212;
+        border: solid 1px #0891b2;
+        color: #d1d5db;
+        padding: 5px 5px 5px 5px;
+    }
+
+    button {
+        background: #0891b2;
+        color: #18181b;
+        border: solid 1px #0891b2;
+        font-family: pixel;
+        font-weight: 600;
+        font-size: 25px;
+        padding: 5px 25px 5px 25px;
+    }
+
+    /* Hover effect */
+    button:hover {
+        background: #047097; /* Change the background color on hover */
+        border-color: #047097; /* Change the border color on hover */
+    }
+</style>
+{% endblock content %}

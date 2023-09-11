@@ -69,6 +69,21 @@ async fn home(State(state): State<AppState>) -> Html<String> {
     Html(output.unwrap())
 }
 
+async fn shock(State(state): State<AppState>) -> Html<String> {
+    let tera = tera_include();
+    let mut context = common_context();
+
+    let output = tera.render("shock.html", &context);
+    Html(output.unwrap())
+}
+
+async fn fursona(State(state): State<AppState>) -> Html<String> {
+    let tera = tera_include();
+    let mut context = common_context();
+
+    let output = tera.render("fursona.html", &context);
+    Html(output.unwrap())
+}
 async fn blog(State(state): State<AppState>) -> Html<String> {
     let tera = tera_include();
     let mut context = common_context();
