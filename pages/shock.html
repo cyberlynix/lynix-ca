@@ -28,6 +28,10 @@
         Intensity (1-99): <input type="number" id="intensity" max="99" min="1" placeholder="Intensity" value="1">
     </div>
 
+    <div style="margin-bottom: 10px;">
+        Duration (1-30s): <input type="number" id="duration" max="30" min="1" placeholder="Duration (seconds)" value="1">
+    </div>
+
     <div id="ping-delay" style="margin-bottom: 10px;">
         Ping Delay (ms): <input type="number" id="pingDelay" placeholder="Delay in ms" value="0">
     </div>
@@ -41,6 +45,7 @@
     const actionSelect = document.getElementById('actionSelect');
     const authInput = document.getElementById('auth');
     const intensityInput = document.getElementById('intensity');
+    const durationInput = document.getElementById('duration')
     const pingDelayInput = document.getElementById('pingDelay');
     const sendButton = document.getElementById('sendButton');
     const reconnectButton = document.getElementById('reconnectButton');
@@ -101,11 +106,14 @@
         const action = actionSelect.value;
         const auth = authInput.value;
         const intensity = intensityInput.value;
+        const duration = durationInput.value;
         const pingDelay = pingDelayInput.value;
+
 
         const data = {
             auth,
             action,
+            duration,
             intensity,
             pingDelay
         };
