@@ -3,41 +3,70 @@
 <div class="floof-content">
 
 
-    <div class="floof-alert animated-gradient">
-        <p>This page is protected with authentication code. <span style="font-weight: 600;">Learn More</span></p>
-    </div>
-
-    <br/>
-    <div class="status" style="margin-bottom: 10px;">
-        Connection Status: <span id="connectionStatus" style="color: red;">Disconnected</span>
+    <div class="floof-alert animated-gradient" style="display: none;">
+        <p>Success! The collar has received the command!</p>
     </div>
     <br/>
-    <div id="authorization" style="margin-bottom: 10px;">
-        Authorization Code: <input id="auth" type="password" placeholder="Authorization Code">
-    </div>
+    <br/>
 
-    <div style="margin-bottom: 10px;">
-        Action: <select id="actionSelect">
-            <option>Shock</option>
-            <option>Vibrate</option>
-            <option>Beep</option>
+    <blockquote>
+        <p><span class="notice" style="font-weight:700;color:#d97706;">[!] Notice:</span> %NOTICE_HERE%</p>
+    </blockquote>
+
+    <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom: 5px;">
+        <div style="margin-bottom: 10px;">
+            Mode: <select id="continousSelect">
+            <option>Normal</option>
+            <option>Continous</option>
+            <option>Russian Roulette</option>
+            <option>Warning + Shock</option>
+            <option>Double Shock</option>
+            <option>Double Shock (Random)</option>
+            <option>Triple Shock</option>
+            <option>Triple Shock (Random)</option>
         </select>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+        Intensity (1-99): <input type="number" id="intensity" max="99" min="1"  style="width:100px;" placeholder="Intensity" value="1">
     </div>
 
     <div style="margin-bottom: 10px;">
-        Intensity (1-99): <input type="number" id="intensity" max="99" min="1" placeholder="Intensity" value="1">
-    </div>
-
-    <div style="margin-bottom: 10px;">
-        Duration (1-30s): <input type="number" id="duration" max="30" min="1" placeholder="Duration (seconds)" value="1">
+        Duration (1-30s): <input type="number" id="duration" max="30" min="1"  style="width:100px;" placeholder="Duration (seconds)" value="1">
     </div>
 
     <div id="ping-delay" style="margin-bottom: 10px;">
-        Ping Delay (ms): <input type="number" id="pingDelay" placeholder="Delay in ms" value="0">
+        Countdown: <input type="number" id="pingDelay" style="width:100px;" placeholder="Delay in ms" value="0">
+    </div>
     </div>
 
-    <button id="reconnectButton">Reconnect</button>
-    <button id="sendButton">Send Command</button>
+    <div style="display:flex;margin-bottom: 5px;justify-content: center; align-items: center;">
+        <button id="reconnectButton" style="margin-right:5px;">Reconnect</button>
+        <button id="stopButton">Emergency Stop</button>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <button id="beepButton" class="action-button" style="margin-right:10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+            </svg>
+        </button>
+        <button id="vibeButton" class="action-button" style="margin-right:10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+        </button>
+        <button id="zapButton" class="action-button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+        </button>
+    </div>
+    <div class="status" style="text-align: center;margin-top:10px;margin-bottom: 3px;">
+        Connection Status: <span id="connectionStatus" style="color: red;">Disconnected</span>
+    </div>
+    <div class="version" style="text-align: center;font-size:17px;margin:0px;">
+        LynxShock <span style="color: rgb(128,128,128);">v1.1.0</span>
+    </div>
 </div>
 
 <script>
@@ -164,20 +193,29 @@
         padding: 5px 5px 5px 5px;
     }
 
-    button {
-        background: #0891b2;
-        color: #18181b;
-        border: solid 1px #0891b2;
-        font-family: pixel;
-        font-weight: 600;
-        font-size: 25px;
-        padding: 5px 25px 5px 25px;
+    .action-button {
+        width: 40px; /* Set the width and height to make it square */
+        height: 40px;
+        display: flex; /* Use flexbox to center the icon */
+        justify-content: center;
+        align-items: center;
     }
 
-    /* Hover effect */
-    button:hover {
-        background: #047097; /* Change the background color on hover */
-        border-color: #047097; /* Change the border color on hover */
+    .floof-content {
+        width: 100%;
     }
+
+    .floof-alert {
+        background: #16a34a;
+    }
+
+    .slidecontainer {
+        display:flex;
+        justify-content: center;
+        justify-items: center;
+        place-items: center;
+    }
+
+
 </style>
 {% endblock content %}

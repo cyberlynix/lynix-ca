@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'pixel';
-    src: url('/assets/fonts/pixel.woff2');
+    src: url('/static/fonts/pixel.woff2');
 }
 
 /* Light Mode */
