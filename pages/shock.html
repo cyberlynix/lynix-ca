@@ -17,10 +17,10 @@
         Server Connection Status: <span id="connectionStatus" style="color: red;">Disconnected</span>
     </div>
     <div class="status" style="margin-top:10px;margin-bottom: 3px;">
-        Shocker Connection Status: <span id="connectionShockerStatus" style="color: red;">Disconnected</span>
+        Shocker Connection Status: <span id="connectionShockerStatus" style="color: orangered;">[!] Unmonitored due to performance issues.</span>
     </div>
     <div class="status" style="margin-top:10px;margin-bottom: 3px;">
-        Latest Server Log: <span id="logStatus" style="color: gray;">-</span>
+        Latest Server Log: <span id="logStatus" style="color: rgb(128,128,128);">-</span>
     </div>
     <br/><br/>
 
@@ -110,18 +110,6 @@
         }
     }
 
-    function updateShockerStatus(status) {
-        const currentTime = new Date().toLocaleTimeString(); // Get the current time
-
-        if (status === 'Connected') {
-            connectionShockerStatusElement.textContent = `Connected at ${currentTime}`;
-            connectionShockerStatusElement.style.color = 'green';
-        } else {
-            connectionShockerStatusElement.textContent = status; // Display the status as-is when not connected
-            connectionShockerStatusElement.style.color = 'red';
-        }
-    }
-
     // Function to handle WebSocket message reception
     function handleMessage(event) {
         console.log('Received message:', event.data);
@@ -205,7 +193,7 @@
 
     // Function to reconnect the WebSocket
     function reconnectWebSocket() {
-        updateShockerStatus('Disconnected');
+       // updateShockerStatus('Disconnected');
 
         if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
             socket.close();
@@ -280,7 +268,7 @@
     }
 
     // Check if collar is online
-    setInterval(sendPingMessage, 1000);
+    //setInterval(sendPingMessage, 1000);
 
     // Initial WebSocket connection
     connectWebSocket();
