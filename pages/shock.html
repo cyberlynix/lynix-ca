@@ -9,21 +9,32 @@
     <br/>
     <br/>
 
-    <blockquote>
-        <p><span class="notice" style="font-weight:700;color:#d97706;">[!] Notice:</span> %NOTICE_HERE%</p>
+    <blockquote style="margin-left:0;">
+        <p><span class="notice" style="font-weight:700;color:#d97706;">[!] Notice:</span> LynxShock can be dangerous if used incorrectly, use at your own risk. Please do not kill Lynix! Never use on your neck!</p>
     </blockquote>
+    <br/>
+    <div class="status" style="margin-top:10px;margin-bottom: 3px;">
+        Server Connection Status: <span id="connectionStatus" style="color: red;">Disconnected</span>
+    </div>
+    <div class="status" style="margin-top:10px;margin-bottom: 3px;">
+        Shocker Connection Status: <span id="connectionShockerStatus" style="color: red;">Disconnected</span>
+    </div>
+    <div class="status" style="margin-top:10px;margin-bottom: 3px;">
+        Latest Server Log: <span id="logStatus" style="color: gray;">-</span>
+    </div>
+    <br/><br/>
 
-    <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom: 5px;">
+    <div style="display:flex;flex-direction: column;margin-bottom: 5px;">
         <div style="margin-bottom: 10px;">
             Mode: <select id="continousSelect">
             <option>Normal</option>
-            <option>Continous</option>
+            <!--<option>Continous</option>
             <option>Russian Roulette</option>
             <option>Warning + Shock</option>
             <option>Double Shock</option>
             <option>Double Shock (Random)</option>
             <option>Triple Shock</option>
-            <option>Triple Shock (Random)</option>
+            <option>Triple Shock (Random)</option>-->
         </select>
         </div>
 
@@ -32,19 +43,19 @@
     </div>
 
     <div style="margin-bottom: 10px;">
-        Duration (1-30s): <input type="number" id="duration" max="30" min="1"  style="width:100px;" placeholder="Duration (seconds)" value="1">
+        Duration (1-120s): <input type="number" id="duration" max="30" min="1"  style="width:100px;" placeholder="Duration (seconds)" value="1">
     </div>
 
     <div id="ping-delay" style="margin-bottom: 10px;">
-        Countdown: <input type="number" id="pingDelay" style="width:100px;" placeholder="Delay in ms" value="0">
+        Countdown (seconds): <input type="number" id="pingDelay" style="width:100px;" placeholder="seconds" value="0">
     </div>
     </div>
 
-    <div style="display:flex;margin-bottom: 5px;justify-content: center; align-items: center;">
+    <div style="display:flex;margin-bottom: 5px;">
         <button id="reconnectButton" style="margin-right:5px;">Reconnect</button>
         <button id="stopButton">Emergency Stop</button>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center;">
+    <div style="display: flex;">
         <button id="beepButton" class="action-button" style="margin-right:10px;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
@@ -61,23 +72,27 @@
             </svg>
         </button>
     </div>
-    <div class="status" style="text-align: center;margin-top:10px;margin-bottom: 3px;">
-        Connection Status: <span id="connectionStatus" style="color: red;">Disconnected</span>
-    </div>
-    <div class="version" style="text-align: center;font-size:17px;margin:0px;">
-        LynxShock <span style="color: rgb(128,128,128);">v1.1.0</span>
-    </div>
 </div>
 
 <script>
     const connectionStatusElement = document.getElementById('connectionStatus');
+    const connectionShockerStatusElement = document.getElementById('connectionShockerStatus');
+    const logStatus = document.getElementById('logStatus');
+
     const actionSelect = document.getElementById('actionSelect');
     const authInput = document.getElementById('auth');
     const intensityInput = document.getElementById('intensity');
     const durationInput = document.getElementById('duration')
     const pingDelayInput = document.getElementById('pingDelay');
-    const sendButton = document.getElementById('sendButton');
+
+
     const reconnectButton = document.getElementById('reconnectButton');
+    const zapButton = document.getElementById('zapButton');
+    const vibeButton = document.getElementById('vibeButton');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const session = urlParams.get('session');
+    const user = urlParams.get('user');
 
     let socket;
 
@@ -95,10 +110,30 @@
         }
     }
 
+    function updateShockerStatus(status) {
+        const currentTime = new Date().toLocaleTimeString(); // Get the current time
+
+        if (status === 'Connected') {
+            connectionShockerStatusElement.textContent = `Connected at ${currentTime}`;
+            connectionShockerStatusElement.style.color = 'green';
+        } else {
+            connectionShockerStatusElement.textContent = status; // Display the status as-is when not connected
+            connectionShockerStatusElement.style.color = 'red';
+        }
+    }
+
     // Function to handle WebSocket message reception
     function handleMessage(event) {
         console.log('Received message:', event.data);
+        const message = JSON.parse(event.data);
         // You can handle the received message here
+        if (message.response === 'ping' && message.client_id === session) {
+            updateShockerStatus('Connected');
+        }
+
+        if(message.response === 'info') {
+            logStatus.textContent = message.msg;
+        }
     }
 
     // Function to handle WebSocket errors
@@ -109,18 +144,19 @@
 
     // Function to connect to the WebSocket server
     function connectWebSocket() {
-        socket = new WebSocket('wss://shock.lynix.ca');
+        socket = new WebSocket('wss://cxsnrc2qpp5ohu2xah1r49h865n9t8kz.lynix.ca');
 
         socket.addEventListener('open', (event) => {
             updateStatus('Exchanging Authentification...');
 
             // Send an initial message with a random auth key
-            const randomAuthKey = Array.from({ length: 32 }, () =>
+            const randomClientKey = Array.from({ length: 32 }, () =>
                 Math.random().toString(36)[2]
             ).join('');
 
             const initialMessage = {
-                auth_key: randomAuthKey,
+                client_id: randomClientKey,
+                client_type: 'web'
             };
             socket.send(JSON.stringify(initialMessage));
 
@@ -169,6 +205,8 @@
 
     // Function to reconnect the WebSocket
     function reconnectWebSocket() {
+        updateShockerStatus('Disconnected');
+
         if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
             socket.close();
         }
@@ -176,8 +214,73 @@
         connectWebSocket();
     }
 
-    sendButton.addEventListener('click', sendWebSocketData);
+    function sendPingMessage() {
+        //updateShockerStatus('Disconnected');
+
+        const pingMessage = {
+            cmd: 'ping',
+            client_id: session
+        };
+
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify(pingMessage));
+        }
+    }
+
+    //sendButton.addEventListener('click', sendWebSocketData);
     reconnectButton.addEventListener('click', reconnectWebSocket);
+
+    zapButton.addEventListener('click', zap);
+    vibeButton.addEventListener('click', vibe);
+
+    function zap() {
+        const intensity = intensityInput.value;
+        const duration = durationInput.value;
+        const pingDelay = pingDelayInput.value;
+
+
+        const data = {
+            cmd: 'serial',
+            client_id: session,
+            user: user,
+            data: {
+                action: "Shock",
+                duration,
+                intensity,
+                pingDelay
+            }
+        };
+
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify(data));
+        }
+    }
+
+    function vibe() {
+        const intensity = intensityInput.value;
+        const duration = durationInput.value;
+        const pingDelay = pingDelayInput.value;
+
+
+        const data = {
+            cmd: 'serial',
+            client_id: session,
+            user: user,
+            data: {
+                    action: "Vibrate",
+                    duration,
+                    intensity,
+                    pingDelay
+            }
+        };
+
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify(data));
+        }
+    }
+
+    // Check if collar is online
+    setInterval(sendPingMessage, 1000);
 
     // Initial WebSocket connection
     connectWebSocket();
@@ -216,6 +319,29 @@
         place-items: center;
     }
 
+    #reconnectButton {
+        font-family: pixel;
+    }
+
+    #stopButton {
+        font-family: pixel;
+        border: solid 1px #b91c1c;
+        background: #b91c1c;
+        color: #d1d5db;
+    }
+
+    button {
+        background: #0891b2;
+        color: #18181b;
+        border: solid 1px #0891b2;
+        font-size: 25px;
+    }
+
+    /* Hover effect */
+    button:hover {
+        background: #047097; /* Change the background color on hover */
+        border-color: #047097; /* Change the border color on hover */
+    }
 
 </style>
 {% endblock content %}
