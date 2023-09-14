@@ -110,6 +110,18 @@
         }
     }
 
+    function updateShockerStatus(status) {
+        const currentTime = new Date().toLocaleTimeString(); // Get the current time
+
+        if (status === 'Connected') {
+            connectionShockerStatusElement.textContent = `Connected`;
+            connectionShockerStatusElement.style.color = 'green';
+        } else {
+            connectionShockerStatusElement.textContent = 'Disconnected'; // Display the status as-is when not connected
+            connectionShockerStatusElement.style.color = 'red';
+        }
+    }
+
     // Function to handle WebSocket message reception
     function handleMessage(event) {
         console.log('Received message:', event.data);
@@ -149,6 +161,8 @@
             socket.send(JSON.stringify(initialMessage));
 
             // Introduce a 0.5-second delay before updating the status to 'Connected'
+            sendPingMessage()
+
             setTimeout(() => {
                 updateStatus('Connected');
             }, 500); // 500 milliseconds (0.5 seconds)
@@ -203,7 +217,7 @@
     }
 
     function sendPingMessage() {
-        //updateShockerStatus('Disconnected');
+        updateShockerStatus('Disconnected');
 
         const pingMessage = {
             cmd: 'ping',
