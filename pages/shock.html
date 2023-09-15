@@ -43,7 +43,7 @@
     </div>
 
     <div style="margin-bottom: 10px;">
-        Duration (1-120s): <input type="number" id="duration" max="30" min="1"  style="width:100px;" placeholder="Duration (seconds)" value="1">
+        Duration (seconds): <input type="number" id="duration" max="30" min="1"  style="width:100px;" placeholder="Duration (seconds)" value="1">
     </div>
 
     <div id="ping-delay" style="margin-bottom: 10px;">
@@ -89,6 +89,7 @@
     const reconnectButton = document.getElementById('reconnectButton');
     const zapButton = document.getElementById('zapButton');
     const vibeButton = document.getElementById('vibeButton');
+    const stopButton = document.getElementById('stopButton');
 
     const urlParams = new URLSearchParams(window.location.search);
     const session = urlParams.get('session');
@@ -234,6 +235,26 @@
 
     zapButton.addEventListener('click', zap);
     vibeButton.addEventListener('click', vibe);
+    stopButton.addEventListener('click', stop);
+
+    /* Emergency Stop */
+    function stop() {
+        const data = {
+            cmd: 'serial',
+            client_id: session,
+            user: user,
+            data: {
+                action: "EmergencyStop",
+                duration: 1,
+                intensity: 1,
+                pingDelay: 0
+            }
+        };
+
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify(data));
+        }
+    }
 
     function zap() {
         const intensity = intensityInput.value;
