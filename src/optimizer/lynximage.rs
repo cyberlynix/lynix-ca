@@ -32,7 +32,7 @@ fn optimize_image(image_path: &Path, width: u32, height: &u32) -> Result<Vec<u8>
 
 const BASE_IMAGE_DIR: &str = "./static/imgs/";
 
-fn is_valid_path(path: &str) -> bool {
+fn is_valid_path(path: String) -> bool {
     // Check if the path starts with the base image directory
     path.starts_with(BASE_IMAGE_DIR)
 }
@@ -50,7 +50,7 @@ async fn optimize_image_handler(
     // Construct the full path to the image
     let image_path = format!("./static/imgs/{}", path);
 
-    if is_valid_path(path) {
+    if is_valid_path(image_path) {
         let image_path = format!("{}{}", BASE_IMAGE_DIR, path);
 
         // Check if the image file exists
@@ -70,6 +70,6 @@ async fn optimize_image_handler(
             Err(_) => HttpResponse::InternalServerError().body("Image processing error"),
         }
     } else {
-        HttpResponse::InternalServerError().body(format!("[FloofOptimizer] Unauthorized Access to System Files! Tried to Access Path: {}", path))
+        HttpResponse::InternalServerError().body(format!("[FloofOptimizer] Unauthorized Access to System Files! Tried to Access Path: {} <br/>This incident will <strong>Reported & Logged</strong>!", path))
     }
 }
