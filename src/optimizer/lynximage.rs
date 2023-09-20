@@ -32,9 +32,20 @@ fn optimize_image(image_path: &Path, width: u32, height: &u32) -> Result<Vec<u8>
 
 const BASE_IMAGE_DIR: &str = "./static/imgs/";
 
-fn is_valid_path(path: String) -> bool {
+fn is_valid_path(path: &String) -> bool {
     // Check if the path starts with the base image directory
     path.starts_with(BASE_IMAGE_DIR)
+}
+
+fn contains_special_characters(path: &String) -> bool {
+// Remove occurrences of ".." from the path
+    let sanitized_path = path.replace("..", ".");
+
+// Define a list of disallowed characters or patterns
+    let disallowed_characters = &['\\', '~'];
+
+// Check if the sanitized path contains any disallowed characters
+    sanitized_path.chars().any(|c| disallowed_characters.contains(&c))
 }
 
 #[get("/api/img")]
@@ -50,16 +61,15 @@ async fn optimize_image_handler(
     // Construct the full path to the image
     let image_path = format!("./static/imgs/{}", path);
 
-    if is_valid_path(image_path) {
-        let image_path = format!("{}{}", BASE_IMAGE_DIR, path);
-
+    // Validate and sanitize the path parameter
+    if is_valid_path(&image_path) && !contains_special_characters(&image_path) {
         // Check if the image file exists
         let image_file = Path::new(&image_path);
         if !image_file.exists() {
             return HttpResponse::NotFound().body("Image not found");
         }
 
-        // Attempt to optimize and convert the image to WebP with custom dimensions
+        // Attempt to optimize and convert the image (as before)
         match optimize_image(image_file, *width, height) {
             Ok(webp_data) => {
                 // Respond with the WebP image
@@ -70,6 +80,7 @@ async fn optimize_image_handler(
             Err(_) => HttpResponse::InternalServerError().body("Image processing error"),
         }
     } else {
-        HttpResponse::InternalServerError().body(format!("[FloofOptimizer] Unauthorized Access to System Files! Tried to Access Path: {} <br/>This incident will <strong>Reported & Logged</strong>!", path))
+        // Handle unauthorized access and sanitize error messages
+        HttpResponse::InternalServerError().body("[FloofOptimizer] Unauthorized Access! This incident has been reported.")
     }
 }
