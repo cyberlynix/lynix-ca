@@ -31,7 +31,7 @@ fn optimize_image(image_path: &Path, width: u32, height: u32) -> Result<Vec<u8>,
     Ok(webp)
 }
 
-const BASE_IMAGE_DIR: &str = "../../static/imgs/";
+const BASE_IMAGE_DIR: &str = "./static/imgs/";
 
 #[get("/api/img")]
 async fn optimize_image_handler(
