@@ -41,7 +41,7 @@ async fn main() -> std::io::Result<()> {
                     ))
                     .add(
                         ("Content-Security-Policy",
-                            "default-src \'none\'")
+                            "default-src 'none' style-src 'self'")
                     )
                     .add((
                         "Cross-Origin-Opener-Policy",
