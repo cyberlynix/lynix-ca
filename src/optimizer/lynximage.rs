@@ -58,13 +58,22 @@ async fn optimize_image_handler(
     let current_dir = env::current_dir().unwrap(); // You may want to handle errors here
 
     // Build the full image path by joining with "./static/imgs"
-    let image_path = current_dir.join("./static/imgs").join(&path);
+    let image_path = current_dir.join(BASE_IMAGE_DIR).join(&path);
 
     // Normalize the image path
-    let normalized_image_path = image_path.canonicalize().ok();
+    let normalized_image_path = match image_path.canonicalize() {
+        Ok(normalized_path) => normalized_path,
+        Err(_) => {
+            let error_message = "Unauthorized Access";
+            return HttpResponse::InternalServerError().body(error_message);
+        }
+    };
 
-    // Check if the image path couldn't be normalized or contains special characters
-    if normalized_image_path.is_none() || contains_special_characters(&path) {
+    // Get the canonicalized path of the project directory
+    let project_dir = current_dir.canonicalize().unwrap(); // You may want to handle errors here
+
+    // Check if the normalized image path is within the project directory
+    if !normalized_image_path.starts_with(&project_dir) {
         let error_message = "Unauthorized Access";
         return HttpResponse::InternalServerError().body(error_message);
     }
