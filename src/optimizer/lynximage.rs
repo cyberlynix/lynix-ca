@@ -31,18 +31,7 @@ fn optimize_image(image_path: &Path, width: u32, height: u32) -> Result<Vec<u8>,
     Ok(webp)
 }
 
-const BASE_IMAGE_DIR: &str = "../../src/static/imgs/";
-
-fn contains_special_characters(path: &String) -> bool {
-// Remove occurrences of ".." from the path
-    let sanitized_path = path.replace("..", ".");
-
-// Define a list of disallowed characters or patterns
-    let disallowed_characters = &['\\', '~'];
-
-// Check if the sanitized path contains any disallowed characters
-    sanitized_path.chars().any(|c| disallowed_characters.contains(&c))
-}
+const BASE_IMAGE_DIR: &str = "static/imgs/";
 
 #[get("/api/img")]
 async fn optimize_image_handler(
@@ -60,23 +49,14 @@ async fn optimize_image_handler(
     // Build the full image path by joining with "./static/imgs"
     let image_path = current_dir.join(BASE_IMAGE_DIR).join(&path);
 
-    // Normalize the image path
-    let normalized_image_path = match image_path.canonicalize() {
-        Ok(normalized_path) => normalized_path,
-        Err(_) => {
-            let error_message = "Unauthorized Access";
-            return HttpResponse::InternalServerError().body(error_message);
-        }
-    };
-
-    // Get the canonicalized path of the project directory
-    let project_dir = current_dir.canonicalize().unwrap(); // You may want to handle errors here
-
-    // Check if the normalized image path is within the project directory
-    if !normalized_image_path.starts_with(&project_dir) {
-        let error_message = "Unauthorized Access";
-        return HttpResponse::InternalServerError().body(error_message);
+    // Check if the image path is within the BASE_IMAGE_DIR
+    if !image_path.canonicalize().map_or(false, |canonical| {
+        canonical.starts_with(PathBuf::from(BASE_IMAGE_DIR).canonicalize().ok().unwrap())
+    }) {
+        return HttpResponse::Unauthorized().body("Unauthorized");
     }
+
+
 
         // Check if the image file exists
         let image_file = Path::new(&image_path);
