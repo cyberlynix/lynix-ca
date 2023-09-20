@@ -70,6 +70,6 @@ async fn optimize_image_handler(
             Err(_) => HttpResponse::InternalServerError().body("Image processing error"),
         }
     } else {
-        HttpResponse::InternalServerError().body("[FloofOptimizer] Unauthorized Access to System Files!")
+        HttpResponse::InternalServerError().body(format!("[FloofOptimizer] Unauthorized Access to System Files! Tried to Access Path: {}", path))
     }
 }
