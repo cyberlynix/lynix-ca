@@ -30,6 +30,13 @@ fn optimize_image(image_path: &Path, width: u32, height: &u32) -> Result<Vec<u8>
     Ok(webp)
 }
 
+const BASE_IMAGE_DIR: &str = "./static/imgs/";
+
+fn is_valid_path(path: &str) -> bool {
+    // Check if the path starts with the base image directory
+    path.starts_with(BASE_IMAGE_DIR)
+}
+
 #[get("/api/img")]
 async fn optimize_image_handler(
     query_params: web::Query<ImageQueryParams>
@@ -43,20 +50,26 @@ async fn optimize_image_handler(
     // Construct the full path to the image
     let image_path = format!("./static/imgs/{}", path);
 
-    // Check if the image file exists
-    let image_file = Path::new(&image_path);
-    if !image_file.exists() {
-        return HttpResponse::NotFound().body("Image not found");
-    }
+    if is_valid_path(path) {
+        let image_path = format!("{}{}", BASE_IMAGE_DIR, path);
 
-    // Attempt to optimize and convert the image to WebP with custom dimensions
-    match optimize_image(image_file, *width, height) {
-        Ok(webp_data) => {
-            // Respond with the WebP image
-            HttpResponse::Ok()
-                .content_type("image/webp")
-                .body(webp_data)
+        // Check if the image file exists
+        let image_file = Path::new(&image_path);
+        if !image_file.exists() {
+            return HttpResponse::NotFound().body("Image not found");
         }
-        Err(_) => HttpResponse::InternalServerError().body("Image processing error"),
+
+        // Attempt to optimize and convert the image to WebP with custom dimensions
+        match optimize_image(image_file, *width, height) {
+            Ok(webp_data) => {
+                // Respond with the WebP image
+                HttpResponse::Ok()
+                    .content_type("image/webp")
+                    .body(webp_data)
+            }
+            Err(_) => HttpResponse::InternalServerError().body("Image processing error"),
+        }
+    } else {
+        HttpResponse::InternalServerError().body("[FloofOptimizer] Unauthorized Access to System Files!")
     }
 }
