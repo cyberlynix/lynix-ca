@@ -12,6 +12,16 @@ pub(crate) async fn show_index() -> Result<HttpResponse, ErrorKind> {
     }
 }
 
+#[get("/reactive-test")]
+pub(crate) async fn show_reactive() -> Result<HttpResponse, ErrorKind> {
+    let template = COMPILED_TEMPLATES.render("reactive-test.html", &tera::Context::new());
+
+    match template {
+        Ok(t) => Ok(HttpResponse::Ok().content_type("text/html").body(t)),
+        Err(e) => Err(ErrorKind::TemplateError(e.to_string()))
+    }
+}
+
 pub(crate) async fn show_not_found() -> Result<HttpResponse, ErrorKind> {
     let mut ctx = tera::Context::new();
     ctx.insert("status", &404);

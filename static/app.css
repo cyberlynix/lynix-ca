@@ -249,3 +249,8 @@ a {
     width: 250px;
     height: 250px;
 }
+
+.auth-btn {
+    background: var(--primary-cyan);
+    color: var(--text-color);
+}

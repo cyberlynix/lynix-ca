@@ -1,6 +1,7 @@
 mod views;
 mod utils;
 mod error_types;
+mod optimizer;
 
 use std::sync::{Arc, Mutex};
 use actix_web::{App, HttpRequest, HttpResponse, HttpServer, middleware, Responder, web, Error};
@@ -17,8 +18,10 @@ async fn main() -> std::io::Result<()> {
             .service(
                 web::scope("")
                     .service(views::index::show_index)
+                    .service(views::index::show_reactive)
                     .service(views::fursona::show_fursona)
                     .service(views::shock::show_shock)
+                    .service(optimizer::lynximage::optimize_image_handler)
             )
             .default_service(
                 web::get().to(show_not_found)
