@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::env;
 use std::error::Error;
 use std::io::Cursor;
 use actix_web::{get, web, App, HttpResponse, HttpServer};
@@ -15,12 +16,12 @@ pub struct ImageQueryParams {
     path: String
 }
 
-fn optimize_image(image_path: &Path, width: u32, height: &u32) -> Result<Vec<u8>, Box<dyn Error>> {
+fn optimize_image(image_path: &Path, width: u32, height: u32) -> Result<Vec<u8>, Box<dyn Error>> {
 
     // Open the image file
     let img = image::open(image_path)?;
 
-    let resized_img = img.resize(width, *height, image::imageops::FilterType::Lanczos3);
+    let resized_img = img.resize_exact(width, height, image::imageops::FilterType::Lanczos3);
 
     let webp_encoder = WebPEncoder::from_image(&resized_img)?;
     let encoded_webp = webp_encoder.encode(65f32);
@@ -30,12 +31,7 @@ fn optimize_image(image_path: &Path, width: u32, height: &u32) -> Result<Vec<u8>
     Ok(webp)
 }
 
-const BASE_IMAGE_DIR: &str = "./static/imgs/";
-
-fn is_valid_path(path: &String) -> bool {
-    // Check if the path starts with the base image directory
-    path.starts_with(BASE_IMAGE_DIR)
-}
+const BASE_IMAGE_DIR: &str = "../../src/static/imgs/";
 
 fn contains_special_characters(path: &String) -> bool {
 // Remove occurrences of ".." from the path
@@ -55,14 +51,24 @@ async fn optimize_image_handler(
 
 
     let path = &query_params.path;
-    let width = &query_params.width;
-    let height = &query_params.height;
+    let width = query_params.width;
+    let height = query_params.height;
 
-    // Construct the full path to the image
-    let image_path = format!("./static/imgs/{}", path);
+    // Get the current working directory
+    let current_dir = env::current_dir().unwrap(); // You may want to handle errors here
 
-    // Validate and sanitize the path parameter
-    if is_valid_path(&image_path) && !contains_special_characters(&image_path) {
+    // Build the full image path by joining with "./static/imgs"
+    let image_path = current_dir.join("./static/imgs").join(&path);
+
+    // Normalize the image path
+    let normalized_image_path = image_path.canonicalize().ok();
+
+    // Check if the image path couldn't be normalized or contains special characters
+    if normalized_image_path.is_none() || contains_special_characters(&path) {
+        let error_message = "Unauthorized Access";
+        return HttpResponse::InternalServerError().body(error_message);
+    }
+
         // Check if the image file exists
         let image_file = Path::new(&image_path);
         if !image_file.exists() {
@@ -70,7 +76,7 @@ async fn optimize_image_handler(
         }
 
         // Attempt to optimize and convert the image (as before)
-        match optimize_image(image_file, *width, height) {
+        match optimize_image(image_file, width, height) {
             Ok(webp_data) => {
                 // Respond with the WebP image
                 HttpResponse::Ok()
@@ -79,8 +85,4 @@ async fn optimize_image_handler(
             }
             Err(_) => HttpResponse::InternalServerError().body("Image processing error"),
         }
-    } else {
-        // Handle unauthorized access and sanitize error messages
-        HttpResponse::InternalServerError().body("[FloofOptimizer] Unauthorized Access! This incident has been reported.")
-    }
 }
