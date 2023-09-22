@@ -35,19 +35,19 @@ async fn main() -> std::io::Result<()> {
                     .add(("X-Frame-Options", "DENY"))
                     .add(("X-Content-Type-Options", "nosniff"))
                     .add(("Referrer-Policy", "strict-origin-when-cross-origin"))
-                    .add((
-                        "Cross-Origin-Embedder-Policy",
-                        "require-corp; report-to=\"default\";",
-                    ))
-                    .add(
-                        ("Content-Security-Policy",
-                            "default-src 'none' style-src 'self'")
-                    )
-                    .add((
+                /*.add((
+                    "Cross-Origin-Embedder-Policy",
+                    "require-corp; report-to=\"default\";",
+                ))
+                .add(
+                    ("Content-Security-Policy",
+                        "default-src 'none' style-src 'self'")
+                )*/
+                    /*.add((
                         "Cross-Origin-Opener-Policy",
                         "same-site; report-to=\"default\";",
                     ))
-                    .add(("Cross-Origin-Resource-Policy", "same-site")),
+                    .add(("Cross-Origin-Resource-Policy", "same-site")),*/
             )
             .wrap(Governor::new(
                 &GovernorConfigBuilder::default()
@@ -66,7 +66,7 @@ async fn main() -> std::io::Result<()> {
                     .service(optimizer::lynximage::optimize_image_handler)
             )
             .default_service(
-                web::get().to(show_disabled)
+                web::get().to(show_not_found)
             )
     })
         .bind(("127.0.0.1", 3001))?
