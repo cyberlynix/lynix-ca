@@ -32,11 +32,15 @@
 <slot></slot>
 
 <footer class="w-full text-gray-700 bg-white dark:text-gray-300 dark:bg-dark py-3 px-5 flex justify-center items-center font-cyber">
-    <div class="w-1/2">
+    <div class="w-3/4 flex">
         <p>
             © 2023 <span class="text-green-600">Cyberlynix</span>. All Rights
             Reserved.
         </p>
+        <div class="flex ml-5">
+            <p class="mr-3">Protected by </p>
+            <a href="https://path.net/"><img src="/path.png" alt="Path Network" class="h-6"/></a>
+        </div>
     </div>
 </footer>
 {/if}
