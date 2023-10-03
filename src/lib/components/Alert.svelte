@@ -12,7 +12,7 @@
      WARNING-ERROR: from-red-600 to to-orange-600
 --> 
 
-<div class="w-full px-4 py-1 inline-flex items-center w-full bg-gradient-to-r from-purple-700 to-blue-700 py-5 w-full animated-gradient">
+<div class="w-full px-4 py-1 inline-flex items-center w-full bg-gradient-to-r from-cyan-700 to-blue-700 py-5 w-full animated-gradient">
     <span class="text-white text-xl">
         <!-- Alert Message -->
         {message}

@@ -18,11 +18,11 @@ p, h1 {
 }
 
 ::-moz-selection { /* Code for Firefox */
-  @apply bg-green-600 text-white
+  @apply bg-cyan-700 text-white
 }
 
 ::selection {
-  @apply bg-green-600 text-white
+  @apply bg-cyan-700 text-white
 }
 
 @keyframes float {
@@ -62,18 +62,18 @@ p, h1 {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-green-600;
+  @apply bg-cyan-600;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-green-700;
+  @apply bg-cyan-700;
 }
 
 
 
 .nav-link {
-  @apply flex items-center md:justify-center font-cyber text-xl px-4 py-2 mt-2 text-gray-900 dark:hover:bg-green-700 dark:focus:bg-green-700 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
+  @apply flex items-center md:justify-center font-cyber text-xl px-4 py-2 mt-2 text-gray-900 transition-colors dark:hover:bg-cyan-700 dark:focus:bg-cyan-700 dark:focus:text-white dark:hover:text-white dark:text-zinc-400 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
 }
 
 .auth-btn {
@@ -102,7 +102,7 @@ p, h1 {
 
 .animated-gradient {
   background-size: 200% 200%;
-  animation: gradientAnimation 15s infinite;
+  animation: gradientAnimation 7s infinite;
 }
 
 /* Typing */

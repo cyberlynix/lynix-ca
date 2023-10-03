@@ -27,14 +27,14 @@
 </div>
 {:else}
 <Navbar/>
-<Alert link="https://lynix.ca/blog/why-i-switched-to-svelte" linkName="Learn More" message="Welcome to the new Lynix.ca, built in SvelteKit!"/>
+<Alert link="https://resonite.com" linkName="Learn More" message="Resonite is launching October 6th! Get ready with the new Resonlynx API for Resonite add it to your avatar today!"/>
 
 <slot></slot>
 
 <footer class="w-full text-gray-700 bg-white dark:text-gray-300 dark:bg-dark py-3 px-5 flex justify-center items-center font-cyber">
     <div class="w-3/4 flex">
         <p>
-            © 2023 <span class="text-green-600">Cyberlynix</span>. All Rights
+            © 2023 <span class="text-cyan-500">Lynix</span>. All Rights
             Reserved.
         </p>
         <div class="flex ml-5">

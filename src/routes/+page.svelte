@@ -12,14 +12,14 @@
     Welcome to lynix.ca my personal website! Thanks for scanning my badge!
 </div>
 <div class="relative h-[700px]">
-    <div class="flex items-center h-full justify-center bg-black bg-opacity-70 absolute z-20 w-full">
+    <div class="flex items-center h-full justify-center bg-black bg-opacity-40 absolute z-20 w-full">
         <div class="max-w-3xl mx-auto text-center">
             <div class="flex justify-center">
                 <FurImage src="/images/Lynix_Mulli.png" alt="Lynix" class="h-32 w-32 mr-5 ml-5 mb-5 rounded-full" loading="lazy"/>
             </div>
-            <h1 class="mb-4 text-3xl text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+            <h1 class="mb-4 text-3xl text-cyan-400 md:text-5xl lg:text-6xl" style="text-shadow: 5px 5px #075985;">
                 Hello, {" "}
-                <span class="text-cyan-600 px-3">I'm <span class="text-green-600">Lynix</span>!</span>
+                <span class="px-3">I'm <span class="">Lynix</span>!</span>
             </h1>
             <p class="text-2xl text-gray-500 dark:text-white">
                 Nice to meet you! Take a look at my pages to learn more about my
@@ -28,7 +28,7 @@
             </p>
         </div>
     </div>
-    <FurImage src="/images/bg.png" alt="Background image" class="h-[700px] w-full object-cover" loading="lazy"/>
+    <FurImage src="/images/pre-resonite.jpg" alt="Background image" class="h-[700px] w-full object-cover" loading="lazy"/>
 </div>
 <!-- Container -->
 <div class="flex flex-col items-center py-20">
@@ -36,7 +36,7 @@
     <section class="p-6 md:w-1/2 w-full">
         <FurImage src="/images/Lynix_Mulli.png" alt="Lynix" class="float-right h-32 w-32 rotate-6 mr-5 ml-5 mb-5 rounded-2xl float-animation" loading="lazy"/>
         <h1 class="text-6xl font-cyber">
-            👋 Hello <span class="text-green-700">There</span>!
+            👋 Hello <span class="text-cyan-600">There</span>!
         </h1>
         <p class="text-gray-300 text-lg font-cyber mt-3">
             As a Cybersecurity student, I'm actively seeking opportunities to
@@ -55,7 +55,7 @@
             imageclass="rounded-2xl"
         />-->
         <h1 class="text-6xl font-cyber">
-            <span class="text-cyan-700">About</span> Me
+            <span class="text-cyan-600">About</span> Me
         </h1>
         <p class="text-gray-300 text-lg font-cyber mt-3">
             I began my journey in IT back in 2013, where I started by learning basic
@@ -71,7 +71,7 @@
     </section>
     <section class="p-6 md:w-1/2 w-full">
         <h1 class="text-6xl font-cyber">
-            Why <span class="text-green-700">Cybersecurity</span>?
+            Why <span class="text-cyan-600">Cybersecurity</span>?
         </h1>
         <p class="text-gray-300 text-lg font-cyber  mt-3">
             In a constantly advancing technological world, ensuring the safety and

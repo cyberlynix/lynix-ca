@@ -1,12 +1,13 @@
 <script lang="ts">
-	
+	import FurImage from "./FurImage.svelte";
 </script>
 
 <div class="w-full text-gray-700 bg-white dark:text-gray-200 dark:bg-dark md:h-20 min-h-20 items-center">
     <div class="flex flex-col max-w-screen-xl h-full px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div class="p-4 flex flex-row items-center justify-between">
-            <a href="/" class="text-3xl font-semibold font-cyber tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">
-                Lynix<span class="text-green-600">.ca</span>
+            <a href="/" style="text-shadow: 5px 5px #075985;" class="flex items-center text-3xl font-semibold font-cyber tracking-widest text-cyan-400 uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                <FurImage src="/images/Lynix_Mulli.png" alt="Lynix" class="h-12 w-12 mr-3 rounded-full" loading="lazy"/>
+                Lynix
             </a>
             <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" aria-label="Toggle Nav">
                 <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6" id="toggle-icon">
@@ -15,8 +16,11 @@
             </button>
         </div>
         <nav id="nav" class="hidden flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row h-full">
-            <a class="nav-link" href="/fursona">
-                Fursona
+            <a class="nav-link" href="/blog">
+                Information
+            </a>
+            <a class="nav-link" href="/blog">
+                Projects
             </a>
             <a class="nav-link" href="/blog">
                 Blog
@@ -27,7 +31,7 @@
             <a class="nav-link" href="/contact">
                 Contact
             </a>
-            <div class="py-4 hidden">
+            <div class="py-4">
                 <button class="auth-btn-2 h-full flex items-center bg-cyan-600 font-semibold ml-5">
                     <span>Login</span>
                 </button>
