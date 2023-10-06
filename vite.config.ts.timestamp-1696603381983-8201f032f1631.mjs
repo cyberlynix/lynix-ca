@@ -1,0 +1,19 @@
+// vite.config.ts
+import { sveltekit } from "file:///C:/Users/Lynix/Documents/GitHub/lynix-ca/node_modules/@sveltejs/kit/src/exports/vite/index.js";
+import { defineConfig } from "file:///C:/Users/Lynix/Documents/GitHub/lynix-ca/node_modules/vite/dist/node/index.js";
+import { imagetools } from "file:///C:/Users/Lynix/Documents/GitHub/lynix-ca/node_modules/vite-imagetools/dist/index.js";
+var vite_config_default = defineConfig({
+  plugins: [
+    imagetools({
+      defaultDirectives: new URLSearchParams({
+        format: "webp",
+        as: "picture"
+      })
+    }),
+    sveltekit()
+  ]
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcudHMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJDOlxcXFxVc2Vyc1xcXFxMeW5peFxcXFxEb2N1bWVudHNcXFxcR2l0SHViXFxcXGx5bml4LWNhXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ZpbGVuYW1lID0gXCJDOlxcXFxVc2Vyc1xcXFxMeW5peFxcXFxEb2N1bWVudHNcXFxcR2l0SHViXFxcXGx5bml4LWNhXFxcXHZpdGUuY29uZmlnLnRzXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ltcG9ydF9tZXRhX3VybCA9IFwiZmlsZTovLy9DOi9Vc2Vycy9MeW5peC9Eb2N1bWVudHMvR2l0SHViL2x5bml4LWNhL3ZpdGUuY29uZmlnLnRzXCI7aW1wb3J0IHsgc3ZlbHRla2l0IH0gZnJvbSAnQHN2ZWx0ZWpzL2tpdC92aXRlJztcclxuaW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAndml0ZSc7XHJcbmltcG9ydCB7IGltYWdldG9vbHMgfSBmcm9tICd2aXRlLWltYWdldG9vbHMnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHtcclxuXHRwbHVnaW5zOiBbXHJcblx0XHRpbWFnZXRvb2xzKHtcclxuXHRcdFx0ZGVmYXVsdERpcmVjdGl2ZXM6IG5ldyBVUkxTZWFyY2hQYXJhbXMoe1xyXG5cdFx0XHRcdGZvcm1hdDogJ3dlYnAnLFxyXG5cdFx0XHRcdGFzOiAncGljdHVyZSdcclxuXHRcdFx0fSlcclxuXHRcdH0pLFxyXG5cdFx0c3ZlbHRla2l0KClcclxuXHRdXHJcbn0pO1xyXG4iXSwKICAibWFwcGluZ3MiOiAiO0FBQXNULFNBQVMsaUJBQWlCO0FBQ2hWLFNBQVMsb0JBQW9CO0FBQzdCLFNBQVMsa0JBQWtCO0FBRTNCLElBQU8sc0JBQVEsYUFBYTtBQUFBLEVBQzNCLFNBQVM7QUFBQSxJQUNSLFdBQVc7QUFBQSxNQUNWLG1CQUFtQixJQUFJLGdCQUFnQjtBQUFBLFFBQ3RDLFFBQVE7QUFBQSxRQUNSLElBQUk7QUFBQSxNQUNMLENBQUM7QUFBQSxJQUNGLENBQUM7QUFBQSxJQUNELFVBQVU7QUFBQSxFQUNYO0FBQ0QsQ0FBQzsiLAogICJuYW1lcyI6IFtdCn0K

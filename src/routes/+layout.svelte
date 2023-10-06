@@ -2,6 +2,8 @@
     import '../app.css';
     import Navbar from "$lib/components/Navbar.svelte";
     import Alert from "$lib/components/Alert.svelte";
+
+    export const ssr = false;
 </script>
 
 <Navbar/>
