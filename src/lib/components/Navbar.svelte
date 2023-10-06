@@ -6,7 +6,7 @@
     <div class="flex flex-col max-w-screen-xl h-full px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div class="p-4 flex flex-row items-center justify-between">
             <a href="/" style="text-shadow: 5px 5px #075985;" class="flex items-center text-3xl font-semibold font-cyber tracking-widest text-cyan-400 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                <FurImage src="/images/Lynix_Mulli.png" alt="Lynix" class="h-12 w-12 mr-3 rounded-full" loading="lazy"/>
+                <FurImage src="/images/lynix-mulli-64.webp" alt="Lynix" class="h-12 w-12 mr-3 rounded-full" loading="lazy"/>
                 Lynix
             </a>
             <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" aria-label="Toggle Nav">
@@ -16,10 +16,10 @@
             </button>
         </div>
         <nav id="nav" class="hidden flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row h-full">
-            <a class="nav-link" href="/blog">
+            <a class="nav-link" href="#information">
                 Information
             </a>
-            <a class="nav-link" href="/blog">
+            <a class="nav-link" href="#projects">
                 Projects
             </a>
             <a class="nav-link" href="/blog">

@@ -9,7 +9,7 @@
 <div class="text-center p-5 h-screen flex justify-center items-center">
 	<div>
 		<div class="flex justify-center">
-			<img src="/images/lynix-cute.png" class="w-[200px] mb-5" alt="Lynix Cute" />
+			<img src="/images/lynix-cute.webp" class="w-[200px] mb-5" alt="Lynix Cute" />
 		</div>
 		<h1 class="text-4xl font-cyber text-cyan-600 font-bold">
 			Error [<span class="text-green-600">{$page.status}</span>]

@@ -14,22 +14,32 @@
 	</p>
 	<br />
 	<br />
+	<h3 class="text-2xl mb-3">Email</h3>
 	<p>
-		<span class="text-green-700">Email:</span> lynix@lynix.ca
+		<span class="text-cyan-500">Email:</span> lynix@lynix.ca
+	</p><br/><br/>
+	<h3 class="text-2xl mb-3">Chat Apps</h3>
+	<p>
+		<span class="text-cyan-500">Matrix:</span> lynix@cyberfurz.chat
 	</p>
 	<p>
-		<span class="text-green-700">Discord:</span> lynix.ca
+		<span class="text-cyan-500">Discord:</span> lynix.ca
 	</p>
 	<p>
-		<span class="text-green-700">Twitter / X:</span> @cyberlynix
+		<span class="text-cyan-500">Telegram:</span> @cyberlynix
+	</p><br/><br/>
+	<h3 class="text-2xl mb-3">Social Medias</h3>
+	<p>
+		<span class="text-cyan-500">Twitter / X:</span> @cyberlynix
 	</p>
     <p>
-		<span class="text-green-700">Bluesky:</span> @lynix.ca
+		<span class="text-cyan-500">Bluesky:</span> @lynix.ca
+	</p><br/><br/>
+	<h3 class="text-2xl mb-3">VR Platforms</h3>
+	<p>
+		<span class="text-cyan-500">Resonite:</span> Lynix
 	</p>
     <p>
-		<span class="text-green-700">Mastodon:</span> lynix@meow.lynix.ca <span class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">Coming Back Soon!</span> 
-	</p>
-	<p>
-		<span class="text-green-700">Telegram:</span> @cyberlynix
+		<span class="text-cyan-500">VRChat:</span> LynixLynx
 	</p>
 </div>

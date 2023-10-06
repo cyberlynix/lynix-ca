@@ -15,7 +15,7 @@
     <div class="flex items-center h-full justify-center bg-black bg-opacity-40 absolute z-20 w-full">
         <div class="max-w-3xl mx-auto text-center">
             <div class="flex justify-center">
-                <FurImage src="/images/Lynix_Mulli.png" alt="Lynix" class="h-32 w-32 mr-5 ml-5 mb-5 rounded-full" loading="lazy"/>
+                <FurImage src="/images/lynix-mulli-256.webp" alt="Lynix" class="h-32 w-32 mr-5 ml-5 mb-5 rounded-full" loading="lazy"/>
             </div>
             <h1 class="mb-4 text-3xl text-cyan-400 md:text-5xl lg:text-6xl" style="text-shadow: 5px 5px #075985;">
                 Hello, {" "}
@@ -28,13 +28,13 @@
             </p>
         </div>
     </div>
-    <FurImage src="/images/pre-resonite.jpg" alt="Background image" class="h-[700px] w-full object-cover" loading="lazy"/>
+    <FurImage src="/images/pre-resonite.webp" alt="Background image" class="h-[700px] w-full object-cover" loading="lazy"/>
 </div>
 <!-- Container -->
 <div class="flex flex-col items-center py-20">
     <!-- Content-->
     <section class="p-6 md:w-1/2 w-full">
-        <FurImage src="/images/Lynix_Mulli.png" alt="Lynix" class="float-right h-32 w-32 rotate-6 mr-5 ml-5 mb-5 rounded-2xl float-animation" loading="lazy"/>
+        <FurImage src="/images/lynix-mulli-256.webp" alt="Lynix" class="float-right h-32 w-32 rotate-6 mr-5 ml-5 mb-5 rounded-2xl float-animation" loading="lazy"/>
         <h1 class="text-6xl font-cyber">
             👋 Hello <span class="text-cyan-600">There</span>!
         </h1>
