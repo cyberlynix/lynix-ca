@@ -31,12 +31,12 @@
             <a class="nav-link" href="/contact">
                 Contact
             </a>
-            <div class="py-4">
+            <!--<div class="py-4">
                 <button class="auth-btn-2 h-full flex items-center bg-cyan-600 font-semibold ml-5">
                     <span>Login</span>
                 </button>
             </div>
-            <!-- Check if the user is authenticated 
+            Check if the user is authenticated 
             <div id="auth-dropdown" class="relative hidden">
                 <button class="auth-btn h-full flex items-center">
                     <img src="/logo.png" alt="Lynix" class="h-6 w-6 mr-2 rounded-full">
