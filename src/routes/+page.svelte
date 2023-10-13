@@ -11,27 +11,25 @@
 >
     Welcome to lynix.ca my personal website! Thanks for scanning my badge!
 </div>
-<div class="relative h-[700px]">
+<div class="relative h-full">
     <div class="flex items-center h-full justify-center bg-black bg-opacity-40 absolute z-20 w-full">
-        <div class="max-w-3xl mx-auto text-center">
+        <div class="max-w-4xl mx-auto text-center">
             <div class="flex justify-center">
-                <FurImage src="/images/lynix-mulli-256.webp" alt="Lynix" class="h-32 w-32 mr-5 ml-5 mb-5 rounded-full" loading="lazy"/>
+                <FurImage src="/images/lynix-mulli-256.webp" alt="Lynix" class="h-32 w-32 mr-5 ml-5 mb-5 rounded-full float-animation" loading="lazy"/>
             </div>
-            <h1 class="mb-4 text-3xl text-cyan-400 md:text-5xl lg:text-6xl" style="text-shadow: 5px 5px #075985;">
+            <h1 class="mb-4 text-3xl text-cyan-500 md:text-5xl lg:text-6xl" style="text-shadow: 5px 5px #075985;">
                 Hello, {" "}
                 <span class="px-3">I'm <span class="">Lynix</span>!</span>
             </h1>
-            <p class="text-2xl text-gray-500 dark:text-white">
-                Nice to meet you! Take a look at my pages to learn more about my
-                background and achievements.
-                <br /> I'm currently pursuing a career in information security.
+            <p class="text-2xl text-gray-500 dark:text-zinc-300">
+                <span class="wave">👋</span> Greetings! I'm your cybernetic lynx enthusiast from the Canadian Maritimes, deeply immersed in the world of Cybersecurity. Delighted to have you join me on my website!
             </p>
         </div>
     </div>
     <FurImage src="/images/pre-resonite.webp" alt="Background image" class="h-[700px] w-full object-cover" loading="lazy"/>
 </div>
 <!-- Container -->
-<div class="flex flex-col items-center py-20">
+<div class="flex-col items-center py-20 hidden"> <!-- REMOVED THIS SECTION -->
     <!-- Content-->
     <section class="p-6 md:w-1/2 w-full">
         <FurImage src="/images/lynix-mulli-256.webp" alt="Lynix" class="float-right h-32 w-32 rotate-6 mr-5 ml-5 mb-5 rounded-2xl float-animation" loading="lazy"/>

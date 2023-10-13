@@ -12,14 +12,9 @@
      WARNING-ERROR: from-red-600 to to-orange-600
 --> 
 
-<div class="w-full px-4 py-1 inline-flex items-center w-full bg-gradient-to-r from-cyan-700 to-blue-700 py-5 w-full animated-gradient">
+<div class="w-full px-4 py-1 inline-flex items-center justify-center w-full bg-gradient-to-r from-cyan-700 to-blue-700 py-5 w-full animated-gradient">
     <span class="text-white text-xl">
         <!-- Alert Message -->
         {message}
-
-        <!-- This link will only appear if a link is passed to the component -->
-        {#if link}
-            <a href={link} class="hover:text-black hover:underline transition-colors font-bold"> {linkName}</a>
-        {/if}
     </span>
 </div>

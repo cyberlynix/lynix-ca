@@ -27,10 +27,10 @@ p, h1 {
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(-5px) rotate(6deg);
+    transform: translateY(-5px);
   }
   50% {
-    transform: translateY(-15px) rotate(6deg);
+    transform: translateY(-15px);
   }
 }
 
@@ -50,6 +50,30 @@ p, h1 {
 .float-animation-rev {
   animation: float-rev 4.5s ease-in-out infinite;
 }
+
+/* Hand Wave Animation */
+/* Orginial Concept by https://codepen.io/jakejarvis/pen/pBZWZw */
+
+.wave {
+  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s;        /* Change to speed up or slow down */
+  animation-iteration-count: infinite;  /* Never stop waving :) */
+  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+   10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+   20% { transform: rotate(-8.0deg) }
+   30% { transform: rotate(14.0deg) }
+   40% { transform: rotate(-4.0deg) }
+   50% { transform: rotate(10.0deg) }
+   60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+  100% { transform: rotate( 0.0deg) }
+}
+
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -84,7 +108,7 @@ p, h1 {
   @apply flex items-center justify-center font-cyber text-xl px-4 py-2 mt-2 text-dark dark:hover:bg-green-700 transition-colors dark:focus:bg-green-700 dark:focus:text-dark dark:hover:text-gray-900 dark:text-gray-900 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
 }
 .dropdown-link {
-  @apply block px-4 py-2 mt-2 font-cyber bg-transparent  dark:bg-transparent dark:hover:bg-green-700 dark:focus:bg-green-700 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
+  @apply block px-4 py-2 mt-2 font-cyber bg-transparent  dark:bg-transparent dark:hover:bg-cyan-700 dark:focus:bg-cyan-700 dark:focus:text-white dark:hover:text-white dark:text-zinc-400  md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
 }
 
 /* Animate Gradiant */
