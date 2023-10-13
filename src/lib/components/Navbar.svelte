@@ -59,7 +59,7 @@
         <a class="nav-link" href="#projects">
             Projects
         </a>
-        <a class="nav-link" href="#projects">
+        <a class="nav-link" href="/gallery">
             Gallery
         </a>
         <!--<a class="nav-link" href="#projects">
@@ -71,7 +71,7 @@
             </span>
             {#if showReferencesDropdown}
             <div class="absolute left-0 w-full mt-0 origin-top-right shadow-lg md:w-48 z-30" id="dropdown-menu" transition:fade={{ delay: 0, duration: 200 }}>
-                <div class="bg-white shadow dark:bg-dark">
+                <div class="shadow bg-dark">
                     <a class="dropdown-link text-left" href="#test">
                         Notes
                     </a>
@@ -94,8 +94,8 @@
             </span>
             {#if showAboutDropdown}
             <div class="absolute left-0 w-full mt-0 origin-top-right shadow-lg md:w-48 z-30" id="dropdown-menu" transition:fade={{ delay: 0, duration: 200 }}>
-                <div class="bg-white shadow dark:bg-dark">
-                    <a class="dropdown-link text-left" href="#test">
+                <div class="shadow bg-dark">
+                    <a class="dropdown-link text-left" href="/about">
                         About Me
                     </a>
                     <a class="dropdown-link text-left" href="#test">
@@ -104,7 +104,7 @@
                     <a class="dropdown-link text-left" href="#test">
                         Certifications
                     </a>
-                    <a class="dropdown-link text-left" href="#test1">
+                    <a class="dropdown-link text-left" href="/fursona">
                         Fursona
                     </a>
                 </div>

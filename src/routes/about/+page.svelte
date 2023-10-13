@@ -7,10 +7,8 @@
 </svelte:head>
 
 <div class="min-h-screen p-5">
-	<h1 class="text-6xl font-cyber text-center">
-		<span class="text-cyan-500">About Myself</span>
-	</h1>
-	<h3 class="text-center text-3xl mt-3">Hey! I'm Anthony (aka Lynix)</h3>
+    <h1 class="text-5xl text-center text-cyan-400" style="text-shadow: 5px 5px #075985;">About Me</h1>
+	<h3 class="text-center text-3xl mt-3">Hey! I'm Anthony (aka Lynix) <span class="wave">👋</span> </h3>
 	<div class="flex justify-center">
 		<p class="text-gray-300 text-lg font-cyber mt-3 w-4/5 text-center">
 			I began my journey in IT back in 2013, where I started by learning basic

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import FurImage from "$lib/components/FurImage.svelte";
 </script>
 
@@ -7,7 +7,7 @@
 </svelte:head>
 
 <div
-    class="bg-emerald-600 font-cyber text-2xl text-black py-1 px-3 hidden"
+    class="bg-emerald-600 font-cyber text-2xl text-black py-1 px-3"
 >
     Welcome to lynix.ca my personal website! Thanks for scanning my badge!
 </div>

@@ -17,6 +17,10 @@ p, h1 {
   @apply break-words;
 }
 
+a {
+  @apply text-cyan-600 hover:text-cyan-500 font-cyber;
+}
+
 ::-moz-selection { /* Code for Firefox */
   @apply bg-cyan-700 text-white
 }
@@ -97,18 +101,38 @@ p, h1 {
 
 
 .nav-link {
-  @apply flex items-center md:justify-center font-cyber text-xl px-4 py-2 mt-2 text-gray-900 transition-colors dark:hover:bg-cyan-700 dark:focus:bg-cyan-700 dark:focus:text-white dark:hover:text-white dark:text-zinc-400 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
+  @apply flex 
+  items-center 
+  md:justify-center 
+  font-cyber 
+  text-xl 
+  px-4 
+  py-2 
+  mt-2 
+  transition-colors 
+  hover:bg-cyan-700 
+  focus:bg-cyan-700 
+  focus:text-white 
+  hover:text-white 
+  text-zinc-400 
+  md:mt-0 
+  focus:outline-none;
 }
 
-.auth-btn {
-  @apply flex items-center justify-center font-cyber text-xl px-4 py-2 mt-2 text-gray-900 dark:hover:bg-dark dark:focus:bg-dark dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
-}
-
-.auth-btn-2 {
-  @apply flex items-center justify-center font-cyber text-xl px-4 py-2 mt-2 text-dark dark:hover:bg-green-700 transition-colors dark:focus:bg-green-700 dark:focus:text-dark dark:hover:text-gray-900 dark:text-gray-900 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
-}
 .dropdown-link {
-  @apply block px-4 py-2 mt-2 font-cyber bg-transparent  dark:bg-transparent dark:hover:bg-cyan-700 dark:focus:bg-cyan-700 dark:focus:text-white dark:hover:text-white dark:text-zinc-400  md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
+  @apply block 
+  px-4
+  py-2 
+  mt-2 
+  font-cyber 
+  bg-transparent  
+  hover:bg-cyan-700 
+  focus:bg-cyan-700
+  focus:text-white 
+  hover:text-white 
+  text-zinc-400  
+  md:mt-0
+  focus:outline-none text-left;
 }
 
 /* Animate Gradiant */
