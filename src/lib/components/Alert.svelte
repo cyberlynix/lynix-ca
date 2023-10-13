@@ -13,7 +13,7 @@
 --> 
 
 <div class="w-full px-4 py-1 inline-flex items-center justify-center w-full bg-gradient-to-r from-cyan-700 to-blue-700 py-5 w-full animated-gradient">
-    <span class="text-white text-xl">
+    <span class="text-white text-xl text-center">
         <!-- Alert Message -->
         {message}
     </span>

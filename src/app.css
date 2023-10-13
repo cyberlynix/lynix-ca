@@ -116,7 +116,12 @@ a {
   hover:text-white 
   text-zinc-400 
   md:mt-0 
-  focus:outline-none;
+  focus:outline-none
+  font-semibold;
+}
+
+.nav-link.active {
+  @apply text-cyan-400 font-semibold hover:text-white;
 }
 
 .dropdown-link {
@@ -126,13 +131,18 @@ a {
   mt-2 
   font-cyber 
   bg-transparent  
-  hover:bg-cyan-700 
-  focus:bg-cyan-700
+  hover:bg-cyan-600 
+  focus:bg-cyan-600
   focus:text-white 
-  hover:text-white 
+  hover:text-white
   text-zinc-400  
   md:mt-0
+  font-semibold
   focus:outline-none text-left;
+}
+
+.dropdown-link.active {
+  @apply text-cyan-400 font-semibold hover:text-white;
 }
 
 /* Animate Gradiant */
