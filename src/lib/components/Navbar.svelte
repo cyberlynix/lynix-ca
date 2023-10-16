@@ -17,6 +17,7 @@
 
     let showReferencesDropdown = false;
     let showAboutDropdown = false;
+    let showEventsDropdown = false;
 
     function toggleReferenceDropdown() {
         showReferencesDropdown = !showReferencesDropdown;
@@ -24,6 +25,10 @@
 
     function toggleAboutDropdown() {
         showAboutDropdown = !showAboutDropdown;
+    }
+
+    function toggleEventsDropdown() {
+        showEventsDropdown = !showEventsDropdown;
     }
 </script>
 
@@ -106,6 +111,20 @@
                 <div class="shadow bg-dark">
                     <a class="dropdown-link text-left" href="/notes" class:active={currentRoute === "/notes"}>
                         Notes
+                    </a>
+                </div>
+            </div>
+            {/if}
+        </button>
+        <button id="nav-link" class="relative" on:mouseenter={toggleEventsDropdown} on:mouseleave={toggleEventsDropdown}>
+            <span class="nav-link h-full flex items-center" class:active={currentRoute === "/cons/furnal-equinox-2024"} >
+                Events
+            </span>
+            {#if showEventsDropdown}
+            <div class="absolute left-0 w-full mt-0 origin-top-right shadow-lg md:w-48 z-30" id="dropdown-menu" transition:fade={{ delay: 0, duration: 200 }}>
+                <div class="shadow bg-dark">
+                    <a class="dropdown-link text-left" href="/cons/furnal-equinox-2024" class:active={currentRoute === "/cons/furnal-equinox-2024"}>
+                        FE 2024
                     </a>
                 </div>
             </div>

@@ -6,7 +6,7 @@
 
 <div class="flex flex-col h-screen">
     <Navbar/>
-    <Alert link="https://lynix.ca/articles/moving-serverless" linkName="Learn More" message="The lynix.ca has received a visual refresh and content changes!"/>
+    <Alert link="https://lynix.ca/articles/moving-serverless" linkName="Learn More" message="Lynix is going to Toronto in March of 2024, more details to come!"/>
     
     <slot></slot>
 </div>
