@@ -146,12 +146,12 @@
                     <a class="dropdown-link" class:active={currentRoute === "/about"} href="/about">
                         About Me
                     </a>
-                    <a class="dropdown-link" href="#test">
+                    <!--<a class="dropdown-link" href="#test">
                         Resume
                     </a>
                     <a class="dropdown-link" href="#test">
                         Certifications
-                    </a>
+                    </a>-->
                     <a class="dropdown-link text-left" class:active={currentRoute === "/fursona"} href="/fursona">
                         Fursona
                     </a>

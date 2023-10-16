@@ -13,7 +13,7 @@
         </svg>
         <span class="text-red-500"><strong>Attention!</strong> This section of the website may be outdated and not up to date with current references.</span>
     </div><br/>
-    <div class="flex flex-wrap mt-3">
+    <!--<div class="flex flex-wrap mt-3">
         <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 p-5">
             <h1 class="text-4xl sm:text-5xl md:text-6xl ">My Fursona</h1>
             <p class="mt-3 text-base sm:text-md">
@@ -53,5 +53,5 @@
                 Reference Sheet by <span class="text-cyan-500">Unknown</span>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
