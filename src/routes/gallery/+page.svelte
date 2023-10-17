@@ -62,11 +62,11 @@
             </div>
             <div class="p-5 ">
                 <img src="/images/lynix-cute.webp" class="h-[256px]"/>
-                <p class="mt-3">Artwork by: Kookiee</p>
+                <p class="mt-3">Artwork by: <a href="https://t.me/KookieeKrafts">KookieeKrafts</a></p>
             </div>
             <div class="p-5 ">
                 <img src="/images/gallery/lynix-adorable.png" class="h-[256px]"/>
-                <p class="mt-3">Artwork by: Kookiee</p>
+                <p class="mt-3">Artwork by: <a href="https://t.me/KookieeKrafts">KookieeKrafts</a></p>
             </div>
             <div class="p-5 ">
                 <img src="/images/gallery/lynix-lynix-lynx1.png" class="h-[256px]"/>
