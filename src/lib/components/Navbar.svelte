@@ -85,13 +85,14 @@
     </div>
 </div>
 
+<div class="border-b border-gray-600">
 <div class="w-full hidden md:flex items-center justify-center py-5">
     <a href="/" style="text-shadow: 5px 5px #075985;" class="flex items-center text-4xl font-semibold font-cyber tracking-widest text-cyan-400 uppercase rounded-lg focus:outline-none focus:shadow-outline">
         <FurImage src="/images/lynix-mulli-64.webp" alt="Lynix" class="h-12 w-12 mr-3 rounded-full" loading="lazy"/>
         Lynix
     </a>
 </div>
-<div class="hidden md:flex justify-center items-center mb-5">
+<div class="hidden md:flex justify-center items-center mb-5 ">
     <nav id="nav" class="hidden flex-col pb-4 md:pb-0 md:flex md:justify-end md:flex-row h-full">
         <a class="nav-link" href="/projects" class:active={currentRoute === "/projects"}>
             Projects
@@ -116,7 +117,7 @@
             </div>
             {/if}
         </button>
-        <button id="nav-link" class="relative" on:mouseenter={toggleEventsDropdown} on:mouseleave={toggleEventsDropdown}>
+        <!--<button id="nav-link" class="relative" on:mouseenter={toggleEventsDropdown} on:mouseleave={toggleEventsDropdown}>
             <span class="nav-link h-full flex items-center" class:active={currentRoute === "/cons/furnal-equinox-2024"} >
                 Events
             </span>
@@ -129,7 +130,7 @@
                 </div>
             </div>
             {/if}
-        </button>
+        </button>-->
         <a class="nav-link" href="/blog" class:active={currentRoute === "/blog"}>
             Blog
         </a>
@@ -163,4 +164,5 @@
             Contact
         </a>
     </nav>
+</div>
 </div>

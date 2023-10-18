@@ -1,5 +1,33 @@
-<script>
 
+<script>
+    import { onMount } from 'svelte';
+  
+    function render() {
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById("container").appendChild(renderer.domElement);
+
+        var loader = new THREE.FBXLoader();
+        loader.load('your_model.fbx', function (object) {
+            scene.add(object);
+        });
+
+        camera.position.z = 5;
+
+        var animate = function () {
+            requestAnimationFrame(animate);
+            // Add animation or interaction logic here
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    }
+
+    onMount(() => {
+        render();
+    });
 </script>
 
 <svelte:head>
@@ -13,6 +41,7 @@
         </svg>
         <span class="text-red-500"><strong>Attention!</strong> This section of the website may be outdated and not up to date with current references.</span>
     </div><br/>
+    <div id="container"></div>
     <!--<div class="flex flex-wrap mt-3">
         <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 p-5">
             <h1 class="text-4xl sm:text-5xl md:text-6xl ">My Fursona</h1>

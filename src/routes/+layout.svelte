@@ -6,7 +6,9 @@
 
 <div class="flex flex-col h-screen">
     <Navbar/>
-    <Alert link="https://lynix.ca/articles/moving-serverless" linkName="Learn More" message="Lynix is going to Toronto in March of 2024, more details to come!"/>
-    
+
     <slot></slot>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/FBXLoader.js"></script>
 </div>
