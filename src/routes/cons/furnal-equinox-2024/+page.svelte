@@ -34,16 +34,17 @@
     <h1 class="text-5xl text-center text-cyan-400" style="text-shadow: 5px 5px #075985;">Furnal Equinox 2024</h1>
     <p class="p-2 text-2xl text-center mt-3">Let's get the party started!</p>
 
-    <h1 id="countdown" class="text-3xl text-center text-cyan-400 my-10" style="text-shadow: 5px 5px #075985;">0 Days 0 Hours 0 Minutes 0 Seconds</h1>
+    <h1 id="countdown" class="hidden text-3xl text-center text-cyan-400 my-10" style="text-shadow: 5px 5px #075985;">0 Days 0 Hours 0 Minutes 0 Seconds</h1>
+    <h1 id="countdown2" class="text-3xl text-center text-red-600 my-10" style="text-shadow: 5px 5px #red;">Event Cancelled</h1>
 
-    <div class="flex justify-center"><div class="mt-3 px-4 py-1 border border-red-600 bg-dark inline-flex items-center mx-2 sm:mx-5">
+    <div class="flex justify-center hidden"><div class="mt-3 px-4 py-1 border border-red-600 bg-dark inline-flex items-center mx-2 sm:mx-5">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width={1.5} stroke="currentColor" class="w-6 h-6 text-red-500 mr-2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46" />
         </svg>
         <span class="text-red-500"><strong>Attention!</strong> Lynix is looking for a place to sleep for 2-4 days in Toronto, Look at Roomshare or DM lynix for more questions.</span>
     </div><br/></div>
     <h3 class="text-center text-3xl mt-5">Details</h3>
-    <p class="text-zinc-300 text-center mt-3 mb-5"><span class="text-cyan-400">Current Lynix Location: <strong>Home</strong></span><br/>Location: 1 Harbour Square - Toronto, Ontario M5J 1A6, Canada<br/>Leaving From: Moncton, New-Brunswick</p>
+    <p class="text-zinc-300 text-center mt-3 mb-5"><span class="text-cyan-400">Current Lynix Location: <strong>Unknown</strong></span><br/>Location: 1 Harbour Square - Toronto, Ontario M5J 1A6, Canada<br/>Leaving From: Earth</p>
    
     <p class="text-zinc-500 text-center mt-3 italic mb-5">More details to come soon...</p>
 
@@ -58,11 +59,11 @@
 
     <h3 class="text-center text-3xl mt-5">Lynix's Checklist</h3>
     <p class="text-zinc-500 text-center mt-3 italic mb-5">What did I figure out yet, ya know this stuff is complicated! <br/><br/>
-    <strong>Projected Cost: ~980$ CAD</strong><br/>
-    <strong>Total Paid: 720$ CAD</strong></p>
+    <strong>Projected Cost: ~0$ CAD</strong><br/>
+    <strong>Total Paid: 0$ CAD</strong></p>
 
     <div class="flex justify-center mt-5">
-        <div class="w-1/4 min-h-[200px] border border-cyan-500 p-4 space-y-1">
+        <div class="w-1/4 min-h-[200px] border border-cyan-500 p-4 space-y-1 hidden">
             <!-- Checklist Items -->
             <div class="flex items-center space-x-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-400">
@@ -119,12 +120,15 @@
                 <p>Checklist Item Name Here!</p>        
             </div>-->
         </div>
+        <p class="text-zinc-500 text-center italic my-10">This information is unavailable due to the changes in travels.</p>
+        <br/>
+        <br/>
     </div>
 
     <h3 class="text-center text-3xl mt-5">Roomshare</h3>
     <p class="text-zinc-500 text-center mt-3">Not yet determined, DM me if you're intrested! (not final) <br/>1/2 Slots Available</p>
     <div class="flex justify-center">
-        <div class="w-1/4 min-h-[200px] flex flex-col items-center justify-center p-4 space-y-1">
+        <div class="w-1/4 min-h-[200px] flex flex-col items-center justify-center p-4 space-y-1 hidden">
             <!-- Checklist Items -->
             <div class="flex items-center space-x-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-600">
@@ -166,14 +170,17 @@
             </div>
         </div>
     </div>
-    <p class="text-zinc-500 text-center mt-3 italic">(Contact @lynix.ca on discord to learn more)</p>
+    <p class="text-zinc-500 text-center italic my-10">This information is unavailable due to the changes in travels.</p>
     <br/>
     <br/>
 
     <h3 class="text-center text-3xl mt-5">Meetup List</h3>
     <p class="text-zinc-500 text-center mt-3">Who I plan to meet at FE2024! ~Meow!</p>
+    <p class="text-zinc-500 text-center italic my-10">This information is unavailable due to the changes in travels.</p>
+    <br/>
+    <br/>
     <div class="flex justify-center">
-        <div class="w-1/4 min-h-[200px] flex flex-col items-center justify-center p-4 space-y-1">
+        <div class="w-1/4 min-h-[200px] flex flex-col items-center justify-center p-4 space-y-1 hidden">
             <!-- Checklist Items -->
             <div class="flex items-center space-x-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-orange-500">
