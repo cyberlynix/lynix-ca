@@ -1,4 +1,6 @@
 <script>
+	import FurImage from "$lib/components/FurImage.svelte";
+
 
 </script>
 
@@ -13,6 +15,7 @@
     <div class="flex justify-center">
         <div class="grid grid-cols-1 md:grid-cols-3 place-items-center gap-5 my-5 w-3/4">
             <div class="p-5 ">
+                <FurImage/>
                 <img src="/images/gallery/lynix-v3-wip.png" class="h-[256px]"/>
                 <p class="mt-3">Artwork by: Maxwell_Wolf</p>
             </div>
